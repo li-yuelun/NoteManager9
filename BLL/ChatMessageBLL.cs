@@ -31,7 +31,11 @@ namespace BLL
 
         public static ObjectsMapper<ChatMessageDTO, ChatMessage> ChatMessageDTOMapperToModel = ObjectMapperManager.DefaultInstance.GetMapper<ChatMessageDTO, ChatMessage>();
 
-        //新增指定人员发送到指定接收人员的消息
+        /// <summary>
+        /// 新增指定人员发送到指定接收人员的消息
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public async Task AddAsync(ChatMessageDTO t)
         {
             var chatmessage = ChatMessageDTOMapperToModel.Map(t);
@@ -46,7 +50,11 @@ namespace BLL
             chatMessageDAL.Commit();
         }
 
-        //删除指定人员发送的消息
+        /// <summary>
+        /// 删除指定人员发送的消息
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public async Task DeleteAsync(ChatMessageDTO t)
         {
             var chatmessage = ChatMessageDTOMapperToModel.Map(t);
@@ -69,7 +77,11 @@ namespace BLL
             chatMessageDAL.Commit();
         }
 
-        //单个ChatMessage删除(软删除)
+        /// <summary>
+        /// 单个ChatMessage删除(软删除)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public async Task DeleteBySoftAsync(ChatMessageDTO t)
         {
             var chatmessage = ChatMessageDTOMapperToModel.Map(t);
@@ -92,7 +104,11 @@ namespace BLL
             chatMessageDAL.Commit();
         }
 
-        //修改指定的聊天信息
+        /// <summary>
+        /// 修改指定的聊天信息
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public async Task UpdateAsync(ChatMessageDTO t)
         {
             var chatmessage = ChatMessageDTOMapperToModel.Map(t);
@@ -183,7 +199,11 @@ namespace BLL
             return ChatMessageMapperToDTO.MapEnum(list).ToList();
         }
 
-        //查询指定发送者和指定接受者之间的所有聊天记录（A和B彼此双向）
+        /// <summary>
+        /// 查询指定发送者和指定接受者之间的所有聊天记录（A和B彼此双向）
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public async Task<List<ChatMessageDTO>> GetFilterByBothsAsync(ChatMessageDTO t)
         {
             var chatmessage = ChatMessageDTOMapperToModel.Map(t);

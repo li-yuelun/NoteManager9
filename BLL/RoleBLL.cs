@@ -36,35 +36,65 @@ namespace BLL
 
         public static ObjectsMapper<ResponseClass, ResponseClassDTO> ResponseClassMapperToDTO = ObjectMapperManager.DefaultInstance.GetMapper<ResponseClass, ResponseClassDTO>();
 
+        /// <summary>
+        /// role单个新增
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public async Task AddAsync(RoleDTO t)
         {
             var role = RoleDTOmapperToModel.Map(t);
             await roleDAL.AddAsync(role);
         }
 
+        /// <summary>
+        /// role单个删除
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public async Task DeleteAsync(RoleDTO t)
         {
             var role = RoleDTOmapperToModel.Map(t);
             await roleDAL.DeleteAsync(role);
         }
 
+        /// <summary>
+        /// role动态删除
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
         public async Task DeleteAsync(Expression<Func<Role, bool>> exp)
         {
             await roleDAL.DeleteAsync(exp);
         }
 
+        /// <summary>
+        /// role单个动态获取
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
         public async Task<RoleDTO> GetEntityAsync(Expression<Func<Role, bool>> exp)
         {
             var role=await roleDAL.GetEntityAsync(exp);
             return RolemapperToDTO.Map(role);
         }
 
+        /// <summary>
+        /// role动态多个获取
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
         public async Task<List<RoleDTO>> GetFiltersAsync(Expression<Func<Role, bool>> exp)
         {
             var list=await roleDAL.GetFiltersAsync(exp);
             return RolemapperToDTO.MapEnum(list).ToList();
         }
 
+        /// <summary>
+        /// role单个修改
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public async Task UpdateAsync(RoleDTO t)
         {
             var role = RoleDTOmapperToModel.Map(t);

@@ -11,57 +11,60 @@
     <script src="~/Jquery/jquery-3.3.1.js"></script>
     <script src="~/layui/layui.js"></script>
     <script>
-        function Load() {
-            var value = "";
-            $("#mycontent").on("click", "a", function () {
-                value = $(this).attr();
-
-            })
-            return value;
-        };
-        layui.use('element', function () {
-            //导航收缩与展示
-            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-            //监听导航点击
-            element.on('nav(demo)', function (elem) {
-                layer.msg(elem.text());
-            });
-            //tab的操作
-            var $ = layui.jquery
-                , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
-            //触发事件
-            var active = {
-                tabAdd: function () {
-                    //新增一个Tab项
-                    element.tabAdd('demo', {
-                        title: '新选项' + (Math.random() * 1000 | 0) //用于演示
-                        , content: Load()
-                        , id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+        layui.use(['element', 'layer', 'jquery'], function () {
+            var element = layui.element;
+            // var layer = layui.layer;
+            var $ = layui.$;
+            // 配置tab实践在下面无法获取到菜单元素
+            $('.site-demo-active').on('click', function () {
+                var dataid = $(this);
+                //这时会判断右侧.layui-tab-title属性下的有lay-id属性的li的数目，即已经打开的tab项数目
+                if ($(".layui-tab-title li[lay-id]").length <= 0) {
+                    //如果比零小，则直接打开新的tab项
+                    active.tabAdd(dataid.attr("data-url"), dataid.attr("data-id"), dataid.attr("data-title"));
+                } else {
+                    //否则判断该tab项是否以及存在
+                    var isData = false; //初始化一个标志，为false说明未打开该tab项 为true则说明已有
+                    $.each($(".layui-tab-title li[lay-id]"), function () {
+                        //如果点击左侧菜单栏所传入的id 在右侧tab项中的lay-id属性可以找到，则说明该tab项已经打开
+                        if ($(this).attr("lay-id") == dataid.attr("data-id")) {
+                            isData = true;
+                        }
                     })
+                    if (isData == false) {
+                        //标志为false 新增一个tab项
+                        active.tabAdd(dataid.attr("data-url"), dataid.attr("data-id"), dataid.attr("data-title"));
+                    }
                 }
-                , tabDelete: function (othis) {
-                    //删除指定Tab项
-                    element.tabDelete('demo', '44'); //删除：“商品管理”
-                    othis.addClass('layui-btn-disabled');
-                }
-                , tabChange: function () {
+                //最后不管是否新增tab，最后都转到要打开的选项页面上
+                active.tabChange(dataid.attr("data-id"));
+            });
+
+            var active = {
+                //在这里给active绑定几项事件，后面可通过active调用这些事件
+                tabAdd: function (url, id, name) {
+                    //新增一个Tab项 传入三个参数，分别对应其标题，tab页面的地址，还有一个规定的id，是标签中data-id的属性值
+                    //关于tabAdd的方法所传入的参数可看layui的开发文档中基础方法部分
+                    element.tabAdd('demo', {
+                        title: name,
+                        content: '<iframe data-frameid="' + id + '" scrolling="auto" frameborder="0" src="' +'https://localhost:53967' +url + '" style="width:100%;height:99%;"></iframe>',
+                        id: id //规定好的id
+                    })
+                    FrameWH();  //计算ifram层的大小
+                  
+                },
+                tabChange: function (id) {
                     //切换到指定Tab项
-                    element.tabChange('demo', '22'); //切换到：用户管理
+                    element.tabChange('demo', id); //根据传入的id传入到指定的tab项
+                },
+                tabDelete: function (id) {
+                    element.tabDelete("demo", id);//删除
                 }
             };
-
-            $('.site-demo-active').on('click', function () {
-                var othis = $(this), type = othis.data('type');
-                active[type] ? active[type].call(this, othis) : '';
-            });
-
-            //Hash地址的定位
-            var layid = location.hash.replace(/^#test=/, '');
-            element.tabChange('test', layid);
-
-            element.on('tab(demo)', function (elem) {
-                location.hash = 'test=' + $(this).attr('lay-id');
-            });
+            function FrameWH() {
+                var h = $(window).height();
+                $("iframe").css("height", h + "px");
+            }
         });
     </script>
     <script>
@@ -140,29 +143,29 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;">聊天用户管理</a>
                         <dl class="layui-nav-child">
-                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/ChatUser/Index" id="ChatUserByIndex">管理首页</a></dd>
-                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/ChatUser/Add" id="ChatUserByAdd">聊天用户新增</a></dd>
+                            <dd><a href="javascript:;" data-id="1" data-title="管理首页" data-url="/ChatUser/Index" id="ChatUserByIndex" class="site-demo-active" data-type="tabAdd">管理首页</a></dd>
+                            <dd><a href="javascript:;" data-id="2" data-title="聊天用户新增" data-url="/ChatUser/Add" id="ChatUserByAdd" class="site-demo-active" data-type="tabAdd">聊天用户新增</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;">聊天管理</a>
                         <dl class="layui-nav-child">
-                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/ChatMessage/Index" id="ChatMessageByIndex">聊天首页</a></dd>
-                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/ChatMessage/Index" id="ChatMessageByAdd">后台模版</a></dd>
+                            <dd><a href="javascript:;" data-id="3" data-title="聊天首页" data-url="/ChatMessage/Index" id="ChatMessageByIndex" class="site-demo-active" data-type="tabAdd">聊天首页</a></dd>
+                            <dd><a href="javascript:;" data-id="4" data-title="后台模版" data-url="/ChatMessage/Index" id="ChatMessageByAdd" class="site-demo-active" data-type="tabAdd">后台模版</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;">音乐管理</a>
                         <dl class="layui-nav-child">
-                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Musics/Index" id="MusicByIndex">音乐首页</a></dd>
-                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Musics/Add" id="MusicByAdd">音乐新增</a></dd>
+                            <dd><a href="javascript:;" data-id="5" data-title="音乐首页" data-url="/Musics/Index" id="MusicByIndex" class="site-demo-active" data-type="tabAdd">音乐首页</a></dd>
+                            <dd><a href="javascript:;" data-id="6" data-title="音乐新增" data-url="/Musics/Add" id="MusicByAdd" class="site-demo-active" data-type="tabAdd">音乐新增</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;">日志管理</a>
                         <dl class="layui-nav-child">
-                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Note/Index" id="NoteByIndex">日志首页</a></dd>
-                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Note/Add" id="NoteByAdd">日志新增</a></dd>
+                            <dd><a href="javascript:;" data-id="7" data-title="日志首页" data-url="/Note/Index" id="NoteByIndex" class="site-demo-active" data-type="tabAdd">日志首页</a></dd>
+                            <dd><a href="javascript:;" data-id="8" data-title="日志新增" data-url="/Note/Add" id="NoteByAdd" class="site-demo-active" data-type="tabAdd">日志新增</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
@@ -171,22 +174,22 @@
                             <dd>
                                 <a href="javascript:;">用户管理</a>
                                 <dl class="layui-nav-child">
-                                    <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/User/Index" id="UserByIndex">用户首页</a></dd>
-                                    <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/User/Add" id="UserByAdd">用户新增</a></dd>
+                                    <dd><a href="javascript:;" data-id="9" data-title="用户首页" data-url="/User/Index" id="UserByIndex" class="site-demo-active" data-type="tabAdd">用户首页</a></dd>
+                                    <dd><a href="javascript:;" data-id="10" data-title="用户新增" data-url="/User/Add" id="UserByAdd" class="site-demo-active" data-type="tabAdd">用户新增</a></dd>
                                 </dl>
                             </dd>
                             <dd>
                                 <a href="javascript:;">角色管理</a>
                                 <dl class="layui-nav-child">
-                                    <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Role/Indedx" id="RoleByIndex">角色首页</a></dd>
-                                    <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Role/Add" id="RoleByAdd">角色新增</a></dd>
+                                    <dd><a href="javascript:;" data-id="11" data-title="角色首页" data-url="/Role/Indedx" id="RoleByIndex" class="site-demo-active" data-type="tabAdd">角色首页</a></dd>
+                                    <dd><a href="javascript:;" data-id="12" data-title="角色新增" data-url="/Role/Add" id="RoleByAdd" class="site-demo-active" data-type="tabAdd">角色新增</a></dd>
                                 </dl>
                             </dd>
                             <dd>
                                 <a href="javascript:;">权限管理</a>
                                 <dl class="layui-nav-child">
-                                    <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Power/Index" id="PowerByIndex">权限首页</a></dd>
-                                    <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Power/Add" id="PowerByAdd">权限新增</a></dd>
+                                    <dd><a href="javascript:;" data-id="13" data-title="权限首页" data-url="/Power/Index" id="PowerByIndex" class="site-demo-active" data-type="tabAdd">权限首页</a></dd>
+                                    <dd><a href="javascript:;" data-id="14" data-title="权限新增" data-url="/Power/Add" id="PowerByAdd" class="site-demo-active" data-type="tabAdd">权限新增</a></dd>
                                 </dl>
                             </dd>
                         </dl>
@@ -200,7 +203,7 @@
                 <div class="layui-tab-content"></div>
             </div>
             <!-- 内容主体区域 -->
-            <div style="padding: 15px;" id="main">内容主体区域</div>
+            <div style="padding: 15px;" id="main"></div>
         </div>
     </div>
 </body>

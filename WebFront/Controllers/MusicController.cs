@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿using Common;
+using DTO;
 using IBLL;
 using Model;
 using Newtonsoft.Json;
@@ -10,6 +11,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using ExpressionHelper = Common.ExpressionHelper;
 
 namespace WebFront.Controllers
 {
@@ -47,22 +49,22 @@ namespace WebFront.Controllers
         [HttpGet]
         public async Task<JsonResult> GetData(string Name,string Language,string Style, string Theme)
         {
-            Expression<Func<Music, bool>> exp=a=>true;
+            var exp = ExpressionHelper.True<Music>();
             if (!string.IsNullOrEmpty(Name))
             {
-                exp =a=> a.Name == Name;
+                exp = exp.And(p => p.Name == Name);
             }
             if (!string.IsNullOrEmpty(Language))
             {
-                exp = a => a.Language == Language;
+                exp = exp.And(p => p.Language == Language);
             }
             if (!string.IsNullOrEmpty(Style))
             {
-                exp = a => a.Style == Style;
+                exp = exp.And(p => p.Style == Style);
             }
             if (!string.IsNullOrEmpty(Theme))
             {
-                exp = a => a.Theme == Theme;
+                exp = exp.And(p => p.Theme == Theme);
             }
             var list = (await musicBLL.GetFiltersAsync(exp));
             return Json(list, JsonRequestBehavior.AllowGet);

@@ -31,35 +31,65 @@ namespace BLL
 
         public static ObjectsMapper<ResponseClass, ResponseClassDTO> ResponseClassMapperToDTO = ObjectMapperManager.DefaultInstance.GetMapper<ResponseClass, ResponseClassDTO>();
 
+        /// <summary>
+        /// power单个新增
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public async Task AddAsync(PowerDTO t)
         {
             var power = PowerDTOMapperToModel.Map(t);
             await powerDAL.AddAsync(power);
         }
 
+        /// <summary>
+        /// role单个删除
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public async Task DeleteAsync(PowerDTO t)
         {
             var power = PowerDTOMapperToModel.Map(t);
             await powerDAL.DeleteAsync(power);
         }
 
+        /// <summary>
+        /// role动态删除
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
         public async Task DeleteAsync(Expression<Func<Power, bool>> exp)
         {
             await powerDAL.DeleteAsync(exp);
         }
 
+        /// <summary>
+        /// role单个动态获取
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
         public async Task<PowerDTO> GetEntityAsync(Expression<Func<Power, bool>> exp)
         {
             var power=await powerDAL.GetEntityAsync(exp);
             return PowerMapperToDTO.Map(power);
         }
 
+        /// <summary>
+        /// role多个动态获取
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
         public async Task<List<PowerDTO>> GetFiltersAsync(Expression<Func<Power, bool>> exp)
         {
             var list=await powerDAL.GetFiltersAsync(exp);
             return PowerMapperToDTO.MapEnum(list).ToList();
         }
 
+        /// <summary>
+        /// role单个修改
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public async Task UpdateAsync(PowerDTO t)
         {
             var power = PowerDTOMapperToModel.Map(t);

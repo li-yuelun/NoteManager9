@@ -90,7 +90,7 @@ namespace DAL
         public T GetEntity(Expression<Func<T, bool>> exp)
         {
             return CurrentDb.GetSingle(exp);
-        }
+        } 
 
         /// <summary>
         /// 多条件查询

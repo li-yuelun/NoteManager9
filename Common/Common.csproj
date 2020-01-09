@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ExpressionHelper.cs" />
     <Compile Include="JWTHelper.cs" />
+    <Compile Include="ParameterReplace.cs" />
     <Compile Include="StringHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

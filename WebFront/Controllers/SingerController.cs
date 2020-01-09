@@ -10,6 +10,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using ExpressionHelper = Common.ExpressionHelper;
 
 namespace WebFront.Controllers
 {
@@ -43,27 +44,26 @@ namespace WebFront.Controllers
         [HttpGet]
         public async Task<JsonResult> GetData(string Name,string Sex,string Style,string FirstLetter,string Country)
         {
-            Expression<Func<Singer, bool>> exp = a => true;
-           
+            var exp = ExpressionHelper.True<Singer>();
             if (!string.IsNullOrEmpty(Name))
             {
-                exp = a => a.Name == Name;
+                exp = exp.And(p => p.Name==Name);
             }
             if (!string.IsNullOrEmpty(Sex))
             {
-                exp = a => a.Sex == Sex;
+                exp = exp.And(p => p.Sex==Sex);
             }
             if (!string.IsNullOrEmpty(Style))
             {
-                exp = a => a.Style == Style;
+                exp = exp.And(p => p.Style==Style);
             }
             if (!string.IsNullOrEmpty(FirstLetter))
             {
-                exp = a => a.FirstLetter == FirstLetter;
+                exp = exp.And(p => p.FirstLetter==FirstLetter);
             }
             if (!string.IsNullOrEmpty(Country))
             {
-                exp = a => a.Country == Country;
+                exp = exp.And(p => p.Country==Country);
             }
             var list =await singerBLL.GetFiltersAsync(exp);
             return Json(list, JsonRequestBehavior.AllowGet);
