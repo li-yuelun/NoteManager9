@@ -1,0 +1,18 @@
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\Common\bin\Debug\Common.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\Common\bin\Debug\Common.pdb
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\Common\obj\Debug\Common.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\Common\obj\Debug\Common.pdb
+D:\vb project\工作\NoteManager9\Common\bin\Debug\Common.dll
+D:\vb project\工作\NoteManager9\Common\bin\Debug\Common.pdb
+D:\vb project\工作\NoteManager9\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+D:\vb project\工作\NoteManager9\Common\obj\Debug\Common.dll
+D:\vb project\工作\NoteManager9\Common\obj\Debug\Common.pdb
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\Common\obj\Debug\Common.csprojAssemblyReference.cache
+D:\vb project\工作\NoteManager9\Common\obj\Debug\Common.csprojAssemblyReference.cache
+D:\vb project\工作\NoteManager9\Common\bin\Debug\JWT.dll
+D:\vb project\工作\NoteManager9\Common\bin\Debug\Newtonsoft.Json.dll
+D:\vb project\工作\NoteManager9\Common\bin\Debug\JWT.pdb
+D:\vb project\工作\NoteManager9\Common\bin\Debug\JWT.xml
+D:\vb project\工作\NoteManager9\Common\bin\Debug\Newtonsoft.Json.xml
+D:\vb project\工作\NoteManager9\Common\obj\Debug\Common.csproj.CopyComplete

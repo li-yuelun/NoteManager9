@@ -1,0 +1,180 @@
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\WebApplication1.dll.config
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\WebApplication1.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\WebApplication1.pdb
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\csc.exe
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\csc.exe.config
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\csc.rsp
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\csi.exe
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\csi.exe.config
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\csi.rsp
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\Microsoft.Managed.Core.targets
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.AppContext.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Collections.Immutable.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Console.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.IO.Compression.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.IO.FileSystem.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.IO.Pipes.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Reflection.Metadata.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Security.AccessControl.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Security.Claims.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Security.Principal.Windows.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.ValueTuple.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Xml.XmlDocument.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Xml.XPath.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\vbc.exe
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\vbc.exe.config
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\vbc.rsp
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\VBCSCompiler.exe
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\roslyn\VBCSCompiler.exe.config
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Microsoft.Owin.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Microsoft.Owin.Security.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Microsoft.Web.Infrastructure.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Newtonsoft.Json.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Owin.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\System.Web.Helpers.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\System.Web.Mvc.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\System.Web.Razor.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\System.Web.Webpages.Deployment.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\System.Web.Webpages.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\System.Web.Webpages.Razor.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Microsoft.Owin.xml
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Microsoft.Owin.Security.xml
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Newtonsoft.Json.xml
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\System.Web.Razor.xml
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\System.Web.Webpages.xml
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\System.Web.Webpages.Deployment.xml
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\System.Web.Webpages.Razor.xml
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\System.Web.Helpers.xml
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\System.Web.Mvc.xml
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\zh-Hans\Microsoft.AspNet.SignalR.Core.resources.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\zh-Hans\Microsoft.AspNet.SignalR.SystemWeb.resources.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\zh-Hans\System.Web.Razor.resources.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\zh-Hans\System.Web.Webpages.resources.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\zh-Hans\System.Web.Webpages.Deployment.resources.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\zh-Hans\System.Web.Helpers.resources.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\bin\zh-Hans\System.Web.Mvc.resources.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\obj\Debug\WebApplication1.csprojAssemblyReference.cache
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\obj\Debug\WebApplication1.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebApplication1\obj\Debug\WebApplication1.pdb
+D:\vb project\工作\NoteManager9\WebApplication1\bin\WebApplication1.dll.config
+D:\vb project\工作\NoteManager9\WebApplication1\bin\WebApplication1.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\WebApplication1.pdb
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\csc.exe
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\csc.exe.config
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\csc.rsp
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\csi.exe
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\csi.exe.config
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\csi.rsp
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\Microsoft.Managed.Core.targets
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.AppContext.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Collections.Immutable.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Console.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.IO.Compression.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.IO.FileSystem.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.IO.Pipes.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Reflection.Metadata.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Security.AccessControl.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Security.Claims.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Security.Principal.Windows.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.ValueTuple.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Xml.XmlDocument.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Xml.XPath.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\vbc.exe
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\vbc.exe.config
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\vbc.rsp
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\VBCSCompiler.exe
+D:\vb project\工作\NoteManager9\WebApplication1\bin\roslyn\VBCSCompiler.exe.config
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Microsoft.Owin.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Microsoft.Owin.Security.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Microsoft.Web.Infrastructure.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Newtonsoft.Json.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Owin.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\System.Web.Helpers.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\System.Web.Mvc.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\System.Web.Razor.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\System.Web.Webpages.Deployment.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\System.Web.Webpages.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\System.Web.Webpages.Razor.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Microsoft.Owin.xml
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Microsoft.Owin.Security.xml
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Newtonsoft.Json.xml
+D:\vb project\工作\NoteManager9\WebApplication1\bin\System.Web.Razor.xml
+D:\vb project\工作\NoteManager9\WebApplication1\bin\System.Web.Webpages.xml
+D:\vb project\工作\NoteManager9\WebApplication1\bin\System.Web.Webpages.Deployment.xml
+D:\vb project\工作\NoteManager9\WebApplication1\bin\System.Web.Webpages.Razor.xml
+D:\vb project\工作\NoteManager9\WebApplication1\bin\System.Web.Helpers.xml
+D:\vb project\工作\NoteManager9\WebApplication1\bin\System.Web.Mvc.xml
+D:\vb project\工作\NoteManager9\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\vb project\工作\NoteManager9\WebApplication1\bin\zh-Hans\Microsoft.AspNet.SignalR.Core.resources.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\zh-Hans\Microsoft.AspNet.SignalR.SystemWeb.resources.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\zh-Hans\System.Web.Razor.resources.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\zh-Hans\System.Web.Webpages.resources.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\zh-Hans\System.Web.Webpages.Deployment.resources.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\zh-Hans\System.Web.Helpers.resources.dll
+D:\vb project\工作\NoteManager9\WebApplication1\bin\zh-Hans\System.Web.Mvc.resources.dll
+D:\vb project\工作\NoteManager9\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
+D:\vb project\工作\NoteManager9\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
+D:\vb project\工作\NoteManager9\WebApplication1\obj\Debug\WebApplication1.dll
+D:\vb project\工作\NoteManager9\WebApplication1\obj\Debug\WebApplication1.pdb
+D:\vb project\工作\NoteManager9\WebApplication1\obj\Debug\WebApplication1.csprojAssemblyReference.cache

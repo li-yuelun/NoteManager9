@@ -1,0 +1,202 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>歌手分类</title>
+    <link rel="stylesheet" href="~/layui/css/layui.css" media="all">
+    <script src="~/layui/layui.js" charset="utf-8"></script>
+    <script src="~/Jquery/jquery-3.3.1.js"></script>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+    <script>
+        layui.use(['util', 'table'], function () {
+            var table = layui.table;
+            var util = layui.util;
+            table.render({
+                elem: '#test'
+                , url: '/Singer/GetData'
+                , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                , page: true //开启分页
+                , parseData: function (res) {
+                    return {
+                        "code": 0,
+                        "msg": "",
+                        "count": 10,
+                        "data": res
+                    };
+                }
+                , cols: [[
+                    { field: 'Id', title: 'ID', sort: true }
+                    , { field: 'Name', title: '歌手名字' }
+                    , { field: 'FirstLetter', title: '歌手名字首字母' }
+                    , { field: 'Style', title: '风格' }
+                    , { field: 'Country', title: '歌手国家' }
+                    , { field: 'Sex', title: '性别' }
+                    , { field: 'Picture', title: '照片' }
+                    , { field: 'IsDeleted', title: '删除标记' }
+                    , { field: 'CreateTime', title: '创建时间', sort: true, templet: function (d) { return util.toDateString(d.commPosttime * 1000, "yyyy-MM-dd HH:mm:ss"); } } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                    , { field: '', title: '操作', toolbar: '#barDemo',width:180 }
+                ]]
+                , id: 'testReload'
+            });
+            table.on('tool(test)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+                var data = obj.data; //获得当前行数据
+                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+                //查看
+                if (layEvent === 'detail') {
+                    layer.alert('日志内容：<br>' + JSON.stringify(data.Detail));
+                }
+                //删除
+                else if (layEvent === 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+                        layer.close(index);
+                        //向服务端发送删除指令
+                        //table.reload('test', {
+                        //    url: '/User/Delete',
+                        //    where: {
+                        //        Id: data.Id
+                        //    }
+                        //});
+                        location.href = "/Singer/Delete?Id=" + data.Id;
+                    });
+                }
+                //编辑
+                else if (layEvent === 'edit') {
+                    //do something
+                    //table.reload('test', {
+                    //    url: '/User/Update',
+                    //    where: {
+                    //        Id: data.Id
+                    //    }
+                    //});
+                    //同步更新缓存对应的值
+                    //obj.update({
+                    //    username: '123'
+                    //    , title: 'xxx'
+                    //});
+                    location.href = "/Singer/Update?Id=" + data.Id;
+                }
+                else if (layEvent === 'LAYTABLE_TIPS') {
+                    layer.alert('Hi，头部工具栏扩展的右侧图标。');
+                }
+            });
+            //查询提交
+            layui.use('form', function () {
+                var form = layui.form;
+                //监听form提交
+                form.on('submit(formDemo)', function (data) {
+                    //要查询的歌手名
+                    var Name = $('#Name').val();
+                    //要查询的歌手名首字母
+                    var FirstLetter = $('#FirstLetters').val();
+                    //要查询的风格
+                    var Style = $('#Styles').val();
+                    //要查询的国家
+                    var Countrys = $('#Countrys').val();
+                    //要查询的性别
+                    var Sex = $('#Sexs').val();
+                    //执行重载
+                    table.reload('testReload', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                        , where: {
+                            Name: Name
+                            , Country: Countrys
+                            , Style: Style
+                            , FirstLetter: FirstLetter
+                            , Sex: Sex
+                        }
+                    }, 'data');
+                    return false;
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">首字母：</label>
+                <div class="layui-input-inline">
+                    <select id="FirstLetters" lay-filter="mytest">
+                        @{
+                            foreach (var FirstLetter in Model.FirstLetters)
+                            {
+                                <option value=@FirstLetter>@FirstLetter</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">歌手风格：</label>
+                <div class="layui-input-inline">
+                    <select id="Styles" lay-filter="mytest">
+                        @{
+                            foreach (var Style in Model.Styles)
+                            {
+                                <option value=@Style>@Style</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">国家：</label>
+                <div class="layui-input-inline">
+                    <select id="Countrys" lay-filter="mytest">
+                        @{
+                            foreach (var Country in Model.Countrys)
+                            {
+                                <option value=@Country>@Country</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">性别：</label>
+                <div class="layui-input-inline">
+                    <select id="Sexs" lay-filter="mytest">
+                        <option value="男">男</option>
+                        <option value=女>女</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">歌手名字：</label>
+                <div class="layui-input-inline">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <input class="layui-input" id="Name" name="Name" placeholder="请填写歌手名" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-input-inline">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">查询</button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <table class="layui-hide" id="test" lay-filter="test" lay-data="{Id: 'test'}"></table>
+        </div>
+    </form>
+</body>
+</html>

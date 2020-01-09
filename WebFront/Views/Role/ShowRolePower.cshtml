@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>角色的权限</title>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+</head>
+<body>
+    <table class="layui-table">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+            <tr>
+                <td>RoleId</td>
+                <td>角色名字</td>
+                <td>角色标识</td>
+                <td>权限名字</td>
+                <td>权限标识</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var entity in Model.PowerDTOs)
+                {
+                    <tr>
+                        <td>@Model.RoleDTO.Id</td>
+                        <td>@Model.RoleDTO.Name</td>
+                        <td>@Model.RoleDTO.Mark</td>
+                        <td>@entity.Name</td>
+                        <td>@entity.Mark</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>

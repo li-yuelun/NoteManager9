@@ -1,0 +1,176 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>首页</title>
+    <link rel="stylesheet" href="~/layui/css/layui.css">
+    <script src="~/Jquery/jquery-3.3.1.js"></script>
+    <script src="~/layui/layui.js"></script>
+    <script>
+      
+    </script>
+</head>
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">layui 后台布局</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="#usermanage" id="user_manage">用户信息管理</a></li>
+                <li class="layui-nav-item"><a href="#notemanage" id="note_manage">日志管理</a></li>
+                <li class="layui-nav-item"><a href="#musicmanage" id="music_manage">音乐管理</a></li>
+                <li class="layui-nav-item"><a href="#chatmanage" id="chat_manage">聊天管理</a></li>
+                <li class="layui-nav-item"><a href="#chatusermanage" id="chatuser_manage">聊天用户信息管理</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">其它系统</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">邮件管理</a></dd>
+                        <dd><a href="">消息管理</a></dd>
+                        <dd><a href="">授权管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">@Model.Message 
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">安全设置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">退了</a></li>
+            </ul>
+        </div>
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test" id="mycontent">
+                    <li class="layui-nav-item site-demo-active" data-type="tabAdd"><a id="detail1"></a></li>
+                    <li class="layui-nav-item site-demo-active" data-type="tabAdd"><a id="detail2"></a></li>
+                    <li class="layui-nav-item site-demo-active" data-type="tabAdd"><a id="detail3"></a></li>
+                    <li class="layui-nav-item site-demo-active" data-type="tabAdd"><a id="detail4"></a></li>
+                    <li class="layui-nav-item site-demo-active" data-type="tabAdd"><a id="detail5"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <div class="layui-tab" lay-filter="demo" lay-allowclose="true">
+                <ul class="layui-tab-title"></ul>
+                <div class="layui-tab-content"></div>
+            </div>
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;" id="main">内容主体区域</div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $("#user_manage").click(function () {
+                $("#detail3").hide();
+                $("#detail4").hide();
+                $("#detail5").hide();
+                $("#detail1").text("用户信息修改");
+                $("#detail1").attr("target", "/User/Update");
+                $("#detail2").hide();
+            });
+            $("#note_manage").click(function () {
+                $("#detail3").hide();
+                $("#detail4").hide();
+                $("#detail5").hide();
+                $("#detail1").text("日志新增");
+                $("#detail1").attr("target", "/Note/Add");
+                $("#detail2").text("日志管理");
+                $("#detail2").attr("target", "/Note/Index");
+            });
+            $("#music_manage").click(function () {
+                $("#detail3").hide();
+                $("#detail4").hide();
+                $("#detail5").hide();
+                $("#detail1").text("音乐首页");
+                $("#detail1").attr("target", "/Music/Add");
+                $("#detail2").hide();
+            });
+            $("#chatuser_manage").click(function () {
+                $("#detail3").hide();
+                $("#detail4").hide();
+                $("#detail5").hide();
+                $("#detail1").text("聊天用户修改");
+                $("#detail1").attr("target", "/ChatUser/Update");
+                $("#detail2").hide();
+            });
+            $("#chat_manage").click(function () {
+                $("#detail3").hide();
+                $("#detail4").hide();
+                $("#detail5").hide();
+                $("#detail1").text("聊天首页");
+                $("#detail1").attr("target", "/ChatMessage/Index");
+                $("#detail2").hide();
+            });
+            $("#detail1").click(function () {
+                $("#main").load($("#detail1").attr("target"));
+            });
+            $("#detail2").click(function () {
+                $("#main").load($("#detail2").attr("target"));
+            });
+            $("#detail3").click(function () {
+                $("#main").load($("#detail3").attr("target"));
+            });
+            $("#detail4").click(function () {
+                $("#main").load($("#detail4").attr("target"));
+            });
+            $("#detail5").click(function () {
+                $("#main").load($("#detail5").attr("target"));
+            });
+        });
+        function GetClickValue() {
+            var value = "";
+            $("#mycontent").on("click", "li", function () {
+                value = $(this).text();
+            })
+            return value;
+        };
+        function Load() {
+            var value = "";
+            $("#mycontent").on("click", "a", function () {
+                value = $(this).attr();
+
+            })
+            return value;
+        };
+        layui.use('element', function () {
+            var $ = layui.jquery, element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+            //触发事件
+            var active = {
+                tabAdd: function () {
+                    //新增一个Tab项
+                    element.tabAdd('demo', {
+                        title: "ss" //用于演示
+                        , content: Load()
+                        , id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+                    })
+                }
+            };
+            $('.site-demo-active').on('click', function () {
+                var othis = $(this), type = othis.data('type');
+                active[type] ? active[type].call(this, othis) : '';
+            });
+            //Hash地址的定位
+            var layid = location.hash.replace(/^#test=/, '');
+            element.tabChange('test', layid);
+            element.on('tab(test)', function (elem) {
+                location.hash = 'test=' + $(this).attr('lay-id');
+            });
+            //一些事件监听
+            element.on('tab(demo)', function (data) {
+                console.log(data);
+            });
+        });
+    </script>
+</body>
+</html>

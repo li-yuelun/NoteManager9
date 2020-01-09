@@ -1,0 +1,220 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>聊天管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="~/layui/css/layui.css" media="all">
+    <script src="~/layui/layui.js" charset="utf-8"></script>
+    <script src="~/Jquery/jquery-3.3.1.js"></script>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+    <script type="text/javascript">
+        //json中的date转换
+        function ChangeDateFormat(cellval) {
+            var date = new Date(parseInt(cellval.replace("/Date(", "").replace(")/", ""), 10));
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            return date.getFullYear() + "-" + month + "-" + currentDate + "  " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        }
+        layui.use(['util', 'table'], function () {
+            var table = layui.table;
+            var util = layui.util;
+            table.render({
+                elem: '#test'
+                , url: '/ChatMessage/GetDataLoad'
+                , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                , where: { Sender: "", Receiver: "" }
+                , page: true //开启分页
+                , parseData: function (res) {
+                    return {
+                        "code": 0,
+                        "msg": "",
+                        "count": 10,
+                        "data": res
+                    };
+                }
+                , cols: [[
+                    { field: 'Id', title: 'ID', sort: true }
+                    , { field: 'Sender', title: '发送者' }
+                    , { field: 'Receiver', title: '接收者' }
+                    , { field: 'Message', title: '消息' }
+                    , { field: 'IsDeleted', title: '删除标记' }
+                    , { field: 'CreateTime', title: '创建时间', sort: true, templet: function (d) { return util.toDateString(d.commPosttime * 1000, "yyyy-MM-dd HH:mm:ss"); } } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                    , { field: '', title: '操作', toolbar: '#barDemo' }
+                ]]
+            });
+            table.on('tool(test)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+                var data = obj.data; //获得当前行数据
+                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+                //查看
+                if (layEvent === 'detail') {
+                    layer.alert('消息内容：<br>' + JSON.stringify(data.Message));
+                }
+                //删除
+                else if (layEvent === 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+                        layer.close(index);
+                        //向服务端发送删除指令
+                        table.reload('test', {
+                            url: '/ChatMessage/Delete',
+                            where: {
+                                Id: data.Id,
+                                Sender: data.Sender,
+                                Receiver: data.Receiver
+                            }
+                        });
+                    });
+                }
+                //编辑(修改)
+                else if (layEvent === 'edit') {
+                    window.location.href = '/ChatMessage/Update?Id=' + data.Id;
+                }
+                else if (layEvent === 'LAYTABLE_TIPS') {
+                    layer.alert('Hi，头部工具栏扩展的右侧图标。');
+                }
+            });
+            //查询提交
+            layui.use('form', function () {
+                var form = layui.form;
+                //监听form提交
+                form.on('submit(formDemo)', function (data) {
+                    var Sender = $("#Senders").val();
+                    var Receiver = $("#Receivers").val();
+                    //var StartDate = $("#startdate").val();
+                    //var StartTime = $("#starttime").val();
+                    //var StartCreateTime = new data((StartDate + " " + StartTime));
+                    //var EndDate = $("#enddate").val();
+                    //var EndTime = $("#endtime").val();
+                    //var EndCreateTime = new data((EndDate + " " + EndTime));
+                    //执行重载
+                    table.reload('test', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                        , where: { Sender: Sender, Receiver: Receiver}
+                    });
+                    return false;
+                });
+            });
+        });
+    </script>
+    <script>
+        //日期选择加载
+            //日期格式选择
+            layui.use('laydate', function () {
+                var laydate = layui.laydate;
+                //常规用法
+                laydate.render({
+                    elem: '#test1'
+                });
+                laydate.render({
+                    elem: '#startdate'
+                    , format: 'dd/MM/yyyy'
+                });
+                laydate.render({
+                    elem: '#starttime'
+                    , type: 'time'
+                    , format: 'H:m'
+                });
+                laydate.render({
+                    elem: '#enddate'
+                    , format: 'dd/MM/yyyy'
+                });
+                laydate.render({
+                    elem: '#endtime'
+                    , type: 'time'
+                    , format: 'H:m'
+                });
+            });
+    </script>
+</head>
+<body>
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">发送者：</label>
+                <div class="layui-input-inline">
+                    <select id="Senders" lay-filter="mytest">
+                        @{
+                            foreach (var Receiver in Model)
+                            {
+                                <option value=@Receiver.ChatName>@Receiver.ChatName</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">接收者：</label>
+                <div class="layui-input-inline">
+                    <select id="Receivers" lay-filter="mytest">
+                        @{
+                            foreach (var Receiver in Model)
+                            {
+                                <option value=@Receiver.ChatName>@Receiver.ChatName</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">起始日期：</label>
+                <div class="layui-input-inline">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <input class="layui-input" id="startdate" placeholder="dd/MM/yyyy" type="text">
+                                <input class="layui-input" id="starttime" placeholder="H:m:s" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">截止日期：</label>
+                <div class="layui-input-inline">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <input class="layui-input" id="enddate" placeholder="dd/MM/yyyy" type="text">
+                                <input class="layui-input" id="endtime" placeholder="H:m:s" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-input-inline">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <button class="layui-btn" lay-submit lay-filter="formDemo">查询</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">查询</button>
+            </div>
+        </div>*@
+        <div class="layui-form-item">
+            <table class="layui-hide" id="test" lay-filter="test" lay-data="{Id: 'test'}"></table>
+        </div>
+    </form>
+</body>
+</html>

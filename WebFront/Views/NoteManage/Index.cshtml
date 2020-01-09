@@ -1,0 +1,207 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>首页</title>
+    <link rel="stylesheet" href="~/layui/css/layui.css">
+    <script src="~/Jquery/jquery-3.3.1.js"></script>
+    <script src="~/layui/layui.js"></script>
+    <script>
+        function Load() {
+            var value = "";
+            $("#mycontent").on("click", "a", function () {
+                value = $(this).attr();
+
+            })
+            return value;
+        };
+        layui.use('element', function () {
+            //导航收缩与展示
+            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+            //监听导航点击
+            element.on('nav(demo)', function (elem) {
+                layer.msg(elem.text());
+            });
+            //tab的操作
+            var $ = layui.jquery
+                , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+            //触发事件
+            var active = {
+                tabAdd: function () {
+                    //新增一个Tab项
+                    element.tabAdd('demo', {
+                        title: '新选项' + (Math.random() * 1000 | 0) //用于演示
+                        , content: Load()
+                        , id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+                    })
+                }
+                , tabDelete: function (othis) {
+                    //删除指定Tab项
+                    element.tabDelete('demo', '44'); //删除：“商品管理”
+                    othis.addClass('layui-btn-disabled');
+                }
+                , tabChange: function () {
+                    //切换到指定Tab项
+                    element.tabChange('demo', '22'); //切换到：用户管理
+                }
+            };
+
+            $('.site-demo-active').on('click', function () {
+                var othis = $(this), type = othis.data('type');
+                active[type] ? active[type].call(this, othis) : '';
+            });
+
+            //Hash地址的定位
+            var layid = location.hash.replace(/^#test=/, '');
+            element.tabChange('test', layid);
+
+            element.on('tab(demo)', function (elem) {
+                location.hash = 'test=' + $(this).attr('lay-id');
+            });
+        });
+    </script>
+    <script>
+        $("#ChatUserByIndex").click(function () {
+            $("#main").load($("#ChatUserByIndex").attr("target"));
+        });
+        $("#ChatUserByAdd").click(function () {
+            $("#main").load($("#ChatUserByAdd").attr("target"));
+        });
+        $("#ChatMessageByIndex").click(function () {
+            $("#main").load($("#ChatMessageByIndex").attr("target"));
+        });
+        $("#ChatMessageByAdd").click(function () {
+            $("#main").load($("#ChatMessageByAdd").attr("target"));
+        });
+        $("#MusicByIndex").click(function () {
+            $("#main").load($("#MusicByIndex").attr("target"));
+        });
+        $("#MusicByAdd").click(function () {
+            $("#main").load($("#MusicByAdd").attr("target"));
+        });
+        $("#NoteByIndex").click(function () {
+            $("#main").load($("#NoteByIndex").attr("target"));
+        });
+        $("#NoteByAdd").click(function () {
+            $("#main").load($("#NoteByAdd").attr("target"));
+        });
+        $("#UserByIndex").click(function () {
+            $("#main").load($("#UserByIndex").attr("target"));
+        });
+        $("#UserByAdd").click(function () {
+            $("#main").load($("#UserByAdd").attr("target"));
+        });
+        $("#RoleByIndex").click(function () {
+            $("#main").load($("#RoleByIndex").attr("target"));
+        });
+        $("#RoleByAdd").click(function () {
+            $("#main").load($("#RoleByAdd").attr("target"));
+        });
+        $("#PowerByIndex").click(function () {
+            $("#main").load($("#PowerByIndex").attr("target"));
+        });
+        $("#PowerByAdd").click(function () {
+            $("#main").load($("#PowerByAdd").attr("target"));
+        });
+    </script>
+</head>
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">后台管理界面</div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">贤心
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">安全设置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">退了</a></li>
+            </ul>
+        </div>
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;" id="mycontent">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">其他管理</a>
+                        <dl class="layui-nav-child">
+                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="javascript:;">选项一</a></dd>
+                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="javascript:;">选项二</a></dd>
+                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="javascript:;">选项三</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">聊天用户管理</a>
+                        <dl class="layui-nav-child">
+                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/ChatUser/Index" id="ChatUserByIndex">管理首页</a></dd>
+                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/ChatUser/Add" id="ChatUserByAdd">聊天用户新增</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">聊天管理</a>
+                        <dl class="layui-nav-child">
+                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/ChatMessage/Index" id="ChatMessageByIndex">聊天首页</a></dd>
+                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/ChatMessage/Index" id="ChatMessageByAdd">后台模版</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">音乐管理</a>
+                        <dl class="layui-nav-child">
+                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Musics/Index" id="MusicByIndex">音乐首页</a></dd>
+                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Musics/Add" id="MusicByAdd">音乐新增</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">日志管理</a>
+                        <dl class="layui-nav-child">
+                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Note/Index" id="NoteByIndex">日志首页</a></dd>
+                            <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Note/Add" id="NoteByAdd">日志新增</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">权限管理</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;">用户管理</a>
+                                <dl class="layui-nav-child">
+                                    <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/User/Index" id="UserByIndex">用户首页</a></dd>
+                                    <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/User/Add" id="UserByAdd">用户新增</a></dd>
+                                </dl>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;">角色管理</a>
+                                <dl class="layui-nav-child">
+                                    <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Role/Indedx" id="RoleByIndex">角色首页</a></dd>
+                                    <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Role/Add" id="RoleByAdd">角色新增</a></dd>
+                                </dl>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;">权限管理</a>
+                                <dl class="layui-nav-child">
+                                    <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Power/Index" id="PowerByIndex">权限首页</a></dd>
+                                    <dd class="layui-nav-item site-demo-active" data-type="tabAdd"><a href="~/Power/Add" id="PowerByAdd">权限新增</a></dd>
+                                </dl>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-body">
+            <div class="layui-tab" lay-filter="demo" lay-allowclose="true">
+                <ul class="layui-tab-title"></ul>
+                <div class="layui-tab-content"></div>
+            </div>
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;" id="main">内容主体区域</div>
+        </div>
+    </div>
+</body>
+</html>

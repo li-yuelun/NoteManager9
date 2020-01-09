@@ -1,0 +1,27 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.2.js"></script>
+    <script src="~/signalr/hubs" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            alert("ok");
+            $.connection.hub.start().done(function () {
+                alert("ok");
+                alert("连接testHub成功");
+            }).fail(function () {
+                alert("ok");
+                alert("连接testHub失败");
+            });
+            $("#btn1").click(function () {
+
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+

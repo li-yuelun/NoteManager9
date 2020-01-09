@@ -1,0 +1,140 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>聊天用户首页</title>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.2.js"></script>
+    <script src="~/Signalr/hubs" type="text/javascript"></script>
+    <script src="~/layui/layui.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="~/layui/css/layui.css" media="all">
+    <script src="~/Jquery/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <h1>聊天首页</h1>
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="hidden" name="Sender" id="Sender" value=@Model.CurrentChatName required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">联系人：</label>
+                <div class="layui-input-inline">
+                    <select id="Receivers" lay-filter="test">
+                        @{
+                            foreach (var Receiver in Model.onlineNamelist)
+                            {
+                                <option value=@Receiver.ChatName>@Receiver.ChatName</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">消  息：</label>
+            <div class="layui-input-block">
+                <textarea class="layui-textarea" name="ChatMessage" id="ChatMessage"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-block">
+                <input type="text" name="Message" id="Message" required lay-verify="required" placeholder="请输入发送消息" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">发送</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+    <script>
+        //json中的date转换
+        function ChangeDateFormat(cellval) {
+            var date = new Date(parseInt(cellval.replace("/Date(", "").replace(")/", ""), 10));
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            return date.getFullYear() + "-" + month + "-" + currentDate + "  " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        }
+        //将返回的json数据显示在areatext上
+        function AreaFull(jsonlist) {
+            var str = "";
+            for (var i = 0; i < jsonlist.length; i++) { 
+                str = str + jsonlist[i].Sender + ":" + ChangeDateFormat(jsonlist[i].CreateTime) + "\n" + jsonlist[i].Message + "\n";
+            }
+            str = str.replace(undefined, "");
+            $("#ChatMessage").val(str);
+        };
+        //显示聊天消息
+        function GetChatMessage() {
+            var Sender = $("#Sender").val();
+            var Receiver = $("#Receivers").val();
+            $.ajax({
+                url: "/ChatMessage/GetMessage",
+                type: "post",
+                data: { Sender: Sender, Receiver: Receiver },
+                dataType: "json",
+                success: function (data) {
+                    AreaFull(data);
+                },
+                error: function () {
+                    window.location.href = '/General/Error';
+                }
+            });
+        };
+        layui.use('form', function () {
+            var form = layui.form;
+            form.on('select(test)', function (data) {
+                var Sender = $("#Sender").val();
+                var Receiver = $("#Receivers").val();
+                $.ajax({
+                    url: "/ChatMessage/GetMessage",
+                    type: "post",
+                    data: { Sender: Sender, Receiver: Receiver },
+                    dataType: "json",
+                    success: function (data) {
+                        AreaFull(data);
+                    },
+                    error: function (data) {
+                        window.location.href = '/General/Error';
+                    }
+                });
+            });
+            //监听提交
+            form.on('submit(formDemo)', function (data) {
+                var Sender = $("#Sender").val();
+                var Message = $("#Message").val();
+                var Receiver = $("#Receivers").val();
+                $.ajax({
+                    url: "/ChatMessage/SendMessage",
+                    type: "post",
+                    data: { Sender: Sender, Message: Message, Receiver: Receiver },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.State == "success") {
+                            //window.location.href = '/ChatUser/Index';
+                            //alert("send success!");
+                            GetChatMessage();
+                        }
+                        else {
+                            alert(data.Message);
+                        }
+                    },
+                    error: function () {
+                        window.location.href = '/General/Error';
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>

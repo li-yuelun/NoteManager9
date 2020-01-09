@@ -1,0 +1,18 @@
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\DTO\bin\Debug\DTO.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\DTO\bin\Debug\DTO.pdb
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\DTO\bin\Debug\MongoDB.Bson.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\DTO\bin\Debug\MongoDB.Bson.xml
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\DTO\obj\Debug\DTO.csproj.CopyComplete
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\DTO\obj\Debug\DTO.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\DTO\obj\Debug\DTO.pdb
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+D:\vb project\工作\NoteManager9\DTO\bin\Debug\DTO.dll
+D:\vb project\工作\NoteManager9\DTO\bin\Debug\DTO.pdb
+D:\vb project\工作\NoteManager9\DTO\bin\Debug\MongoDB.Bson.dll
+D:\vb project\工作\NoteManager9\DTO\bin\Debug\MongoDB.Bson.xml
+D:\vb project\工作\NoteManager9\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+D:\vb project\工作\NoteManager9\DTO\obj\Debug\DTO.csproj.CopyComplete
+D:\vb project\工作\NoteManager9\DTO\obj\Debug\DTO.dll
+D:\vb project\工作\NoteManager9\DTO\obj\Debug\DTO.pdb
+D:\vb project\工作\NoteManager9\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
