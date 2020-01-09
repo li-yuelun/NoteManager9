@@ -319,3 +319,4 @@ D:\vb project\工作\NoteManager9\DAL\obj\Debug\DAL.pdb
 D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\DAL\bin\Debug\MySql.Data.xml
 D:\vb project\工作\NoteManager9\DAL\bin\Debug\MySql.Data.xml
 D:\vb project\工作\NoteManager9\DAL\bin\Debug\mongocrypt.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\DAL\bin\Debug\mongocrypt.dll

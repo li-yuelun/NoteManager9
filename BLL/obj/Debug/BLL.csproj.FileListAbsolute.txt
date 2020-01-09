@@ -127,3 +127,4 @@ D:\vb project\工作\NoteManager9\BLL\obj\Debug\BLL.csproj.CopyComplete
 D:\vb project\工作\NoteManager9\BLL\obj\Debug\BLL.dll
 D:\vb project\工作\NoteManager9\BLL\obj\Debug\BLL.pdb
 D:\vb project\工作\NoteManager9\BLL\bin\Debug\mongocrypt.dll
+D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\BLL\bin\Debug\mongocrypt.dll
