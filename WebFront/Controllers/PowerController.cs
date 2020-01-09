@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿using Common;
+using DTO;
 using IBLL;
 using Model;
 using Newtonsoft.Json;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using ExpressionHelper = Common.ExpressionHelper;
 
 namespace WebFront.Controllers
 {
@@ -30,18 +32,19 @@ namespace WebFront.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> GetData(string Name)
+        public async Task<JsonResult> GetData(string Name,string Mark)
         {
+            var exp = ExpressionHelper.True<Power>();
             if (!string.IsNullOrEmpty(Name))
             {
-                var list = (await userBLL.GetFiltersAsync(e => e.Name == Name));
-                return Json(list, JsonRequestBehavior.AllowGet);
+                exp = exp.And(p => p.Name == Name);
             }
-            else
+            if (!string.IsNullOrEmpty(Mark))
             {
-                var list = (await userBLL.GetFiltersAsync(e => true));
-                return Json(list, JsonRequestBehavior.AllowGet);
+                exp = exp.And(p => p.Name == Name);
             }
+            var list = (await powerBLL.GetFiltersAsync(exp));
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -67,8 +70,15 @@ namespace WebFront.Controllers
         [HttpGet]
         public async Task<ActionResult> Delete(long Id)
         {
-            await powerBLL.DeletedAsync(Id);
-            return Redirect("/Power/Index");
+            try
+            {
+                await powerBLL.DeletedAsync(Id);
+                return Redirect("/Power/Index");
+            }
+            catch (Exception ex)
+            {
+                return Content("删除失败"+ex.Message);
+            }
         }
 
         [HttpGet]

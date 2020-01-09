@@ -95,12 +95,14 @@ namespace WebFront.Controllers
             try
             {
                 singerDTO.FirstLetter = StringHelper.ChineseToEnglish(singerDTO.Name);
+                singerDTO.CreateTime = DateTime.Now;
+                singerDTO.IsDeleted = false;
                 await singerBLL.AddAsync(singerDTO);
-                return JsonConvert.SerializeObject(new ResponseClassDTO() { State = "ok", Message = "" });
+                return JsonConvert.SerializeObject(new ResponseClassDTO() { State = "success" });
             }
             catch (Exception ex)
             {
-                return JsonConvert.SerializeObject(new ResponseClassDTO() { State = "ok", Message = ex.Message });
+                return JsonConvert.SerializeObject(new ResponseClassDTO() { State = "fail", Message = ex.Message });
             }
         }
 
@@ -129,7 +131,7 @@ namespace WebFront.Controllers
         public async Task<ActionResult> Delete(long Id)
         {
             await singerBLL.DeleteAsync(e => e.Id == Id && e.IsDeleted == false);
-            return View("ok");
+            return Redirect("/Singer/Index");
         }
 
     }

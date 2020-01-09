@@ -68,8 +68,15 @@ namespace WebFront.Controllers
         [HttpGet]
         public async Task<ActionResult> Delete(long Id)
         {
-            await userBLL.DeletedAsync(Id);
-            return Redirect("/User/Index");
+            try
+            {
+                await userBLL.DeletedAsync(Id);
+                return Redirect("/User/Index");
+            }
+            catch (Exception ex)
+            {
+                return Content("删除失败"+ex.Message);
+            }
         }
 
         //根据用户id获取要修改的用户

@@ -500,4 +500,3 @@ D:\vb project\工作\NoteManager9\WebFront\bin\Pipelines.Sockets.Unofficial.xml
 D:\vb project\工作\NoteManager9\WebFront\bin\System.IO.Pipelines.xml
 D:\vb project\工作\NoteManager9\WebFront\bin\System.Numerics.Vectors.xml
 D:\vb project\工作\NoteManager9\WebFront\bin\System.Runtime.CompilerServices.Unsafe.xml
-D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\WebFront\bin\mongocrypt.dll

@@ -1,5 +1,7 @@
-﻿using DTO;
+﻿using Common;
+using DTO;
 using IBLL;
+using Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using ExpressionHelper = Common.ExpressionHelper;
 
 namespace WebFront.Controllers
 {
@@ -29,18 +32,19 @@ namespace WebFront.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> GetData(string ChatName)
+        public async Task<JsonResult> GetData(string ChatName,string Password)
         {
+            var exp = ExpressionHelper.True<ChatUser>();
             if (!string.IsNullOrEmpty(ChatName))
             {
-                var list = (await chatUserBLL.GetFiltersAsync(e => e.ChatName == ChatName));
-                return Json(list, JsonRequestBehavior.AllowGet);
+                exp = exp.And(p=>p.ChatName==ChatName);
             }
-            else
+            if (!string.IsNullOrEmpty(Password))
             {
-                var list = (await chatUserBLL.GetFiltersAsync(e => true));
-                return Json(list, JsonRequestBehavior.AllowGet);
+                exp = exp.And(p => p.Password == Password);
             }
+            var list = (await chatUserBLL.GetFiltersAsync(exp));
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -92,8 +96,15 @@ namespace WebFront.Controllers
         [HttpGet]
         public async Task<ActionResult> Delete(long Id)
         {
-            await chatUserBLL.DeleteAsync(e=>e.Id==Id && e.IsDeleted == false);
-            return Redirect("/ChatUser/Index");
+            try
+            {
+                await chatUserBLL.DeleteAsync(e => e.Id == Id && e.IsDeleted == false);
+                return Redirect("/ChatUser/Index");
+            }
+            catch (Exception ex)
+            {
+                return Content("删除失败"+ex.Message);
+            }
         }
 
         [HttpGet]

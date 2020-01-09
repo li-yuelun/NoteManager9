@@ -58,29 +58,17 @@
                         obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                         layer.close(index);
                         //向服务端发送删除指令
-                        //table.reload('test', {
+                        //table.reload('testReload', {
                         //    url: '/User/Delete',
                         //    where: {
                         //        Id: data.Id
                         //    }
-                        //});
+                        //}, 'data');
                         location.href = "/User/Delete?Id=" + data.Id;
                     });
                 }
                 //编辑
                 else if (layEvent === 'edit') {
-                    //do something
-                    //table.reload('test', {
-                    //    url: '/User/Update',
-                    //    where: {
-                    //        Id: data.Id
-                    //    }
-                    //});
-                    //同步更新缓存对应的值
-                    //obj.update({
-                    //    username: '123'
-                    //    , title: 'xxx'
-                    //});
                     location.href = "/User/Update?Id=" + data.Id;
                 }
                 else if (layEvent === 'LAYTABLE_TIPS') {

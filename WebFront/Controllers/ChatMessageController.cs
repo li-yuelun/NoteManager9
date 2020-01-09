@@ -153,9 +153,9 @@ namespace WebFront.Controllers
                 await chatMessageBLL.DeleteAsync(chatMessageDTO);
                 return Redirect("/ChatMessage/Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return Content("error");
+                return Content("删除失败"+ex.Message);
             }
           
         }

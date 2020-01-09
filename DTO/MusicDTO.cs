@@ -23,5 +23,7 @@ namespace DTO
         public string Url { get; set; }
         //歌手id
         public long Singer_Id { get; set; }
+        //演唱者
+        public string SingerName { get; set; }
     }
 }

@@ -36,11 +36,11 @@
         <div class="layui-form-item">
             <label class="layui-form-label">歌手性别：</label>
             <div class="layui-input-block">
-                <select name="interest" lay-filter="aihao">
-                    <option value="man">男</option>
-                    <option value="woman">女</option>
-                    <option value="group">组合</option>
-                    <option value="unman_unwoman">不男不女</option>
+                <select name="Sexs" id="Sexs">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                    <option value="组合">组合</option>
+                    <option value="不男不女">不男不女</option>
                 </select>
             </div>
         </div>
@@ -65,11 +65,14 @@
         //监听提交
         form.on('submit(formDemo)', function (data) {
             var Name = $("#Name").val();
-            var Password = $("#Password").val();
+            var Style = $("#Style").val();
+            var Country = $("#Country").val();
+            var Sex = $("#Sexs").val();
+            var Picture = $("#Picture").val();
             $.ajax({
                 url: "/Singer/Add",
                 type: "post",
-                data: { Name: Name, Password: Password },
+                data: { Name: Name, Style: Style, Country: Country, Sex: Sex, Picture: Picture},
                 dataType: "json",
                 success: function (data) {
                     if (data.State == "success") {

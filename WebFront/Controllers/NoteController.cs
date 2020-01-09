@@ -67,8 +67,15 @@ namespace WebFront.Controllers
         [HttpGet]
         public async Task<ActionResult> Delete(long Id)
         {
-            await noteBLL.DeleteAsync(e=>e.Id==Id && e.IsDeleted == false);
-            return Redirect("/Note/Index");
+            try
+            {
+                await noteBLL.DeleteAsync(e => e.Id == Id && e.IsDeleted == false);
+                return Redirect("/Note/Index");
+            }
+            catch (Exception ex)
+            {
+                return Redirect("删除失败"+ex.Message);
+            }
         }
 
         [HttpGet]

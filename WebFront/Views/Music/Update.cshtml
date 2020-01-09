@@ -22,18 +22,43 @@
         <div class="layui-form-item">
             <label class="layui-form-label">歌曲名字：</label>
             <div class="layui-input-block">
-                <input type="text" name="Name" id="Name" value=@Model.Name required lay-verify="required" placeholder="请输入歌曲名" autocomplete="off" class="layui-input">
+                <input type="text" name="Name" id="Name" value=@Model.Name required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">歌曲地址：</label>
+            <label class="layui-form-label">歌曲语言：</label>
             <div class="layui-input-block">
-                <input type="text" name="Url" id="Url" value=@Model.Url required lay-verify="required" placeholder="请输入歌曲地址" autocomplete="off" class="layui-input">
+                <textarea placeholder="请输入内容" class="layui-textarea" name="Language" id="Language">@Model.Language</textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">演唱歌手：</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" class="layui-textarea" name="SingerName" id="SingerName">@Model.SingerName</textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">歌曲风格：</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" class="layui-textarea" name="Style" id="Style">@Model.Style</textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">歌曲主题：</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" class="layui-textarea" name="Theme" id="Theme">@Model.Theme</textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">歌曲歌词：</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" class="layui-textarea" name="Lyrics" id="Lyrics">@Model.Lyrics</textarea>
             </div>
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit lay-filter="confirm">修改</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
     </form>
@@ -46,15 +71,20 @@
                 var Id = $("#Id").val();
                 var Name = $("#Name").val();
                 var Url = $("#Url").val();
+                var Language = $("#Language").val();
+                var Style = $("#Style").val();
+                var Theme = $("#Theme").val();
+                var Lyrics = $("#Lyrics").val();
+                var SingerName = $("#SingerName").val();
                 $.ajax({
-                    url: "/Music/UpdateAsync",
+                    url: "/Music/Update",
                     type: "Post",
-                    data: { Name: Name, Url: Url, Id: Id, Singer_Id: Singer_Id },
+                    data: { Name: Name, Url: Url, Id: Id, Singer_Id: Singer_Id, Language: Language, Style: Style, Theme: Theme, Lyrics: Lyrics, SingerName: SingerName },
                     dataType: "json",
                     success: function (data) {
                         if (data.State == "success") {
-                            //window.location.href = '/Music/Index';
                             alert("修改成功");
+                            window.location.href = '/Music/Index';
                         }
                         else {
                             alert(data.Message);

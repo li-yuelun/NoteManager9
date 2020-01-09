@@ -36,7 +36,7 @@
                 }
                 , cols: [[
                     { field: 'Id', title: 'ID', sort: true }
-                    , { field: 'Name', title: '权限名' }
+                    , { field: 'Name', title: '权限名字' }
                     , { field: 'Mark', title: '权限标识' }
                     , { field: 'IsDeleted', title: '删除标记' }
                     , { field: 'CreateTime', title: '创建时间', sort: true, templet: function (d) { return util.toDateString(d.commPosttime * 1000, "yyyy-MM-dd HH:mm:ss"); } } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
@@ -91,6 +91,7 @@
             var $ = layui.$, active = {
                 reload: function () {
                     var Name = $('#Name').val();
+                    var Mark = $('#Mark').val();
                     //执行重载
                     table.reload('testReload', {
                         page: {
@@ -98,6 +99,7 @@
                         }
                         , where: {
                             Name: Name
+                            , Mark: Mark
                         }
                     }, 'data');
                 }
@@ -112,8 +114,11 @@
 </head>
 <body>
     <div class="demoTable">
-        名字：<div class="layui-inline">
-             <input class="layui-input" name="Name" id="Name" autocomplete="off">
+        权限名字：<div class="layui-inline">
+            <input class="layui-input" name="Name" id="Name" autocomplete="off">
+        </div>
+        权限标识：<div class="layui-inline">
+            <input class="layui-input" name="Mark" id="Mark" autocomplete="off">
         </div>
         <button class="layui-btn" data-type="reload">搜索</button>
     </div>

@@ -108,8 +108,10 @@ namespace WebFront.Controllers
         {
             try
             {
+                musicDTO.CreateTime = DateTime.Now;
+                musicDTO.IsDeleted = false;
                 await musicBLL.AddAsync(musicDTO);
-                return JsonConvert.SerializeObject(new ResponseClassDTO() { State = "success", Message = "" });
+                return JsonConvert.SerializeObject(new ResponseClassDTO() { State = "success" });
             }
             catch (Exception ex)
             {
@@ -121,12 +123,19 @@ namespace WebFront.Controllers
         [HttpGet]
         public async Task<ActionResult> Delete(long Id)
         {
-            await musicBLL.DeleteAsync(e=>e.Id==Id);
-            return View("/Music/Index");
+            try
+            {
+                await musicBLL.DeleteAsync(e => e.Id == Id);
+                return Redirect("/Music/Index");
+            }
+            catch (Exception ex)
+            {
+                return Content("删除失败"+ex.Message);
+            }
         }
 
         [HttpPost]
-        public async Task<string> UpdateAsync(MusicDTO musicDTO)
+        public async Task<string> Update(MusicDTO musicDTO)
         {
             try
             {

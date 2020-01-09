@@ -27,7 +27,6 @@
                 elem: '#test'
                 , url: '/Role/GetData'
                 , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-                , where: { Name: "" }
                 , page: true //开启分页
                 , parseData: function (res) {
                     return {
@@ -39,10 +38,10 @@
                 }
                 , cols: [[
                     { field: 'Id', title: 'ID', sort: true }
-                    , { field: 'Name', title: '角色名' }
+                    , { field: 'Name', title: '角色名字' }
+                    , { field: 'Mark', title: '角色标记' }
                     , { field: 'IsDeleted', title: '删除标记' }
                     , { field: 'CreateTime', title: '创建时间', sort: true, templet: function (d) { return util.toDateString(d.commPosttime * 1000, "yyyy-MM-dd HH:mm:ss"); } } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                    , { field: 'Mark', title: '角色标记' }
                     , { field: '', title: '操作', toolbar: '#barDemo' }
                 ]]
                 , id: 'testReload'
@@ -91,9 +90,11 @@
                     layer.alert('Hi，头部工具栏扩展的右侧图标。');
                 }
             });
-            var $ = layui.$, active = {
+            var $ = layui.$,
+            active = {
                 reload: function () {
                     var Name = $('#Name').val();
+                    var Mark = $('#Mark').val();
                     //执行重载
                     table.reload('testReload', {
                         page: {
@@ -101,6 +102,7 @@
                         }
                         , where: {
                             Name: Name
+                            , Mark: Mark
                         }
                     }, 'data');
                 }
@@ -115,8 +117,11 @@
 </head>
 <body>
     <div class="demoTable">
-        名字：<div class="layui-inline">
+        角色名字：<div class="layui-inline">
             <input class="layui-input" name="Name" id="Name" autocomplete="off">
+        </div>
+        角色标记：<div class="layui-inline">
+            <input class="layui-input" name="Mark" id="Mark" autocomplete="off">
         </div>
         <button class="layui-btn" data-type="reload">搜索</button>
     </div>

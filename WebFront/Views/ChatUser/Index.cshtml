@@ -77,16 +77,19 @@
                     layer.alert('Hi，头部工具栏扩展的右侧图标。');
                 }
             });
-            var $ = layui.$, active = {
+            var $ = layui.$,
+            active = {
                 reload: function () {
                     var ChatName = $('#ChatName').val();
+                    var Password = $('#Password').val();
                     //执行重载
                     table.reload('testReload', {
                         page: {
                             curr: 1 //重新从第 1 页开始
                         }
-                        , where: {
+                        , where:{
                             ChatName: ChatName
+                           ,Password:Password
                         }
                     }, 'data');
                 }
@@ -101,8 +104,11 @@
 </head>
 <body>
     <div class="demoTable">
-        名字：<div class="layui-inline">
+        聊天名字：<div class="layui-inline">
             <input class="layui-input" name="ChatName" id="ChatName" autocomplete="off">
+        </div>
+        聊天密码：<div class="layui-inline">
+            <input class="layui-input" name="Password" id="Password" autocomplete="off">
         </div>
         <button class="layui-btn" data-type="reload">搜索</button>
     </div>
