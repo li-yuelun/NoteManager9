@@ -9,7 +9,6 @@ D:\vb project\工作\NoteManager9\Common\obj\Debug\Common.csproj.CoreCompileInpu
 D:\vb project\工作\NoteManager9\Common\obj\Debug\Common.dll
 D:\vb project\工作\NoteManager9\Common\obj\Debug\Common.pdb
 D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\Common\obj\Debug\Common.csprojAssemblyReference.cache
-D:\vb project\工作\NoteManager9\Common\obj\Debug\Common.csprojAssemblyReference.cache
 D:\vb project\工作\NoteManager9\Common\bin\Debug\JWT.dll
 D:\vb project\工作\NoteManager9\Common\bin\Debug\Newtonsoft.Json.dll
 D:\vb project\工作\NoteManager9\Common\bin\Debug\JWT.pdb
