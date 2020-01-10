@@ -2,11 +2,18 @@
 
 namespace DTO
 {
+    /// <summary>
+    /// 角色和器对应的权限
+    /// </summary>
     public class RolePowerDTO
     {
-        //角色
+        /// <summary>
+        /// 角色
+        /// </summary>
         public RoleDTO RoleDTO { get; set; }
-        //角色对应的权限
+        /// <summary>
+        /// 角色对应的权限
+        /// </summary>
         public List<PowerDTO> PowerDTOs { get; set; }
     }
 }

@@ -12,17 +12,29 @@ namespace Model
         //指定主键和自增列，当然数据库中也要设置主键和自增列才会有效
         [SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
         public long Id { get; set; }
-        //聊天对象的connectionId
+        /// <summary>
+        /// 聊天对象的connectionId
+        /// </summary>
         public string ConnectionId { get; set; }
-        //对象名
+        /// <summary>
+        /// 对象名
+        /// </summary>
         public string ChatName { get; set; }
-        //对象密码
+        /// <summary>
+        /// 对象密码
+        /// </summary>
         public string Password { get; set; }
-        //是否在线
+        /// <summary>
+        /// 是否在线
+        /// </summary>
         public bool IsOnline { get; set; } = false;
-        //删除标记
+        /// <summary>
+        /// 删除标记
+        /// </summary>
         public bool? IsDeleted { get; set; } = false;
-        //创建时间
+        /// <summary>
+        /// 创建时间
+        /// </summary>
         public DateTime? CreateTime { get; set; } = DateTime.Now;
     }
 }

@@ -1,10 +1,17 @@
 ﻿namespace DTO
 {
+    /// <summary>
+    /// 角色权限中间表
+    /// </summary>
     public class RolePowerRelation
     {
-        //角色主键
+        /// <summary>
+        /// 角色主键
+        /// </summary>
         public long Role_Id { get; set; }
-        //权限主键
+        /// <summary>
+        /// 权限主键
+        /// </summary>
         public long Power_Id { get; set; }
     }
 }

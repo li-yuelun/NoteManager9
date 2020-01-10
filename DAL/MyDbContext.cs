@@ -26,6 +26,7 @@ namespace DAL
                 Console.WriteLine();
             };
         }
+        //用来处理事务多表查询和复杂的操作
         public SqlSugarClient Db;
 
         public SimpleClient<User> UserDb { get { return new SimpleClient<User>(Db); } }
@@ -44,6 +45,7 @@ namespace DAL
 
         public SimpleClient<RolePowerRelation> RolePowerRelationDb { get { return new SimpleClient<RolePowerRelation>(Db); } }
 
+        //用来处理事务多表查询和复杂的操作
         public SimpleClient<T> CurrentDb { get { return new SimpleClient<T>(Db); } } //用来处理T表的常用操作
     }
 }

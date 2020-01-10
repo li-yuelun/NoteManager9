@@ -319,7 +319,6 @@
     <Content Include="Views\Singer\SingerList.cshtml" />
     <Content Include="Views\Singer\SingerMusics.cshtml" />
     <Content Include="Views\Singer\Update.cshtml" />
-    <Content Include="Views\User\ShowUserRolePower.cshtml" />
     <Content Include="Views\User\Update.cshtml" />
     <Content Include="Views\NoteManage\Register.cshtml" />
   </ItemGroup>

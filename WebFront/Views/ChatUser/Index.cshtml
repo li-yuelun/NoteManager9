@@ -15,6 +15,7 @@
         <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del_soft">软删除</a>
     </script>
     <script>
         //json中的date转换
@@ -67,6 +68,14 @@
                         obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                         layer.close(index);
                         location.href = "/ChatUser/Delete?Id=" + data.Id;
+                    });
+                }
+                //软删除
+                else if (layEvent === 'del_soft') {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+                        layer.close(index);
+                        location.href = "/ChatUser/DeleteBySoft?Id=" + data.Id;
                     });
                 }
                 //编辑

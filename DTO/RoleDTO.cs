@@ -5,15 +5,25 @@ namespace DTO
     public class RoleDTO
     {
         public long Id { get; set; }
-        //角色名字
+        /// <summary>
+        /// 角色名字
+        /// </summary>
         public string Name { get; set; }
-        //删除标记
+        /// <summary>
+        /// 删除标记
+        /// </summary>
         public bool? IsDeleted { get; set; } = false;
-        //创建时间
+        /// <summary>
+        /// 创建时间
+        /// </summary>
         public DateTime? CreateTime { get; set; } = DateTime.Now;
-        //角色标志(标识)
+        /// <summary>
+        /// 角色标志(标识)
+        /// </summary>
         public string Mark { get; set; }
-        //是否被选择
+        /// <summary>
+        /// 是否被选择
+        /// </summary>
         public bool? IsChoosed { get; set; } = false;
     }
 }

@@ -21,13 +21,13 @@
         <div class="layui-form-item">
             <label class="layui-form-label">角色名字：</label>
             <div class="layui-input-block">
-                <input type="text" name="Name" id="Name" value=@Model.RoleDTO.Name required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                <input type="text" name="Name" id="Name" value=@Model.RoleDTO.Name required lay-verify="required" placeholder="请输入角色名字" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">角色标识：</label>
             <div class="layui-input-block">
-                <input type="text" name="Mark" id="Mark" value=@Model.RoleDTO.Mark required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                <input type="text" name="Mark" id="Mark" value=@Model.RoleDTO.Mark required lay-verify="required" placeholder="请输入角色标识" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item" pane="">
@@ -35,15 +35,15 @@
             <div class="layui-input-block">
                 @{
 
-                    foreach (var powerDTO in @Model.PowerDTO)
+                    foreach (var powerDTO in @Model.PowerDTOs)
                     {
                         if (powerDTO.IsChoosed)
                         {
-                            <input name="like1[Power_Ids]" lay-skin="primary" title=@powerDTO.Name type="checkbox" checked>
+                            <input name="Power_Ids" lay-skin="primary" value=@powerDTO.Id title=@powerDTO.Name type="checkbox" checked>
                         }
                         else
                         {
-                            <input name="like1[Power_Ids]" lay-skin="primary" title=@powerDTO.Name disabled="" type="checkbox">
+                            <input name="Power_Ids" lay-skin="primary" value=@powerDTO.Id title=@powerDTO.Name type="checkbox" disabled="">
                         }
                     }
                 }
@@ -59,38 +59,41 @@
     <script>
         layui.use('form', function () {
             var form = layui.form;
+            form.render();
             //监听提交
             form.on('submit(formDemo)', function (obj) {
                 var data = obj.data;
-                $.ajax(function () {
-                    var Name = $("#Name").val();
-                    var Password = $("#Password").val();
-                    var Id = $("#Id").val();
-                    var chk_value = [];//定义一个数组
-                    $('input[name="Role_Ids"]:checked').each(function () {//遍历每一个名字为nodes的复选框，其中选中的执行函数
-                        chk_value.push($(this).val());//将选中的值添加到数组chk_value中
-                    });
-                    var Role_Ids = chk_value.join(",").split(",");
-                    $.ajax({
-                        url: "/User/Update",
-                        type: "post",
-                        data: { Name: Name, Password: Password, Id: Id, Role_Ids: Role_Ids },
-                        dataType: "json",
-                        success: function (data) {
-                            if (data.State == "success") {
-                                window.location.href = '/User/Index';
-                            }
-                            else {
-                                alert(data.Message);
-                            }
-                        },
-                        error: function () {
-                            window.location.href = '/General/Error';
-                        }
-                    });
-                    return false;
+                //角色名字
+                var Name = $("#Name").val();
+                //角色标识
+                var Mark = $("#Mark").val();
+                //角色id
+                var Id = $("#Id").val();
+                var chk_value = [];//定义一个数组
+                $('input[name="Power_Ids"]:checked').each(function () {//遍历每一个名字为nodes的复选框，其中选中的执行函数
+                    chk_value.push($(this).val());//将选中的值添加到数组chk_value中
                 });
+                var Role_Ids = chk_value.join(",").split(",");
+                $.ajax({
+                    url: "/User/Update",
+                    type: "post",
+                    data: { Name: Name, Mark: Mark, Id: Id, Role_Ids: Role_Ids },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.State == "success") {
+                            window.location.href = '/User/Index';
+                        }
+                        else {
+                            alert(data.Message);
+                        }
+                    },
+                    error: function () {
+                        window.location.href = '/General/Error';
+                    }
+                });
+                return false;
             });
+            form.render();
         });
     </script>
 </body>

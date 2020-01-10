@@ -1,5 +1,7 @@
-﻿using DTO;
+﻿using Common;
+using DTO;
 using IBLL;
+using Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using ExpressionHelper = Common.ExpressionHelper;
 
 namespace WebFrontByCustomer.Controllers
 {
@@ -22,16 +25,32 @@ namespace WebFrontByCustomer.Controllers
         public INoteBLL noteBLL { get; set; }
 
         [HttpGet]
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var list = await noteBLL.GetFiltersAsync(e => e.IsDeleted == false);
-            return View(list);
+            return View();
         }
 
         [HttpGet]
-        public async Task<JsonResult> GetAll()
+        public async Task<JsonResult> GetData(string Name,string Style,DateTime? StartDate,DateTime? EndDate)
         {
-            var list = (await noteBLL.GetFiltersAsync(e => e.IsDeleted == false));
+            var exp = ExpressionHelper.True<Note>();
+            if (!string.IsNullOrEmpty(Name))
+            {
+                exp=exp.And(p=>p.Name==Name);
+            }
+            if (!string.IsNullOrEmpty(Style))
+            {
+                exp = exp.And(p => p.Style == Style);
+            }
+            if (StartDate != null)
+            {
+                exp = exp.And(p => DateTime.Compare(p.CreateTime ?? DateTime.Now, StartDate ?? DateTime.Now) >= 0);
+            }
+            if (EndDate != null)
+            {
+                exp = exp.And(p => DateTime.Compare(p.CreateTime ?? DateTime.Now, EndDate ?? DateTime.Now) <= 0);
+            }
+            var list = (await noteBLL.GetFiltersAsync(exp)).Where(e=>e.User_Id == 1);
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 

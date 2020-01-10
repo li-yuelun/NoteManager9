@@ -45,10 +45,11 @@ namespace BLL
         {
             var role = RoleDTOmapperToModel.Map(t);
             await roleDAL.AddAsync(role);
+            await roleDAL.CommitAsync();
         }
 
         /// <summary>
-        /// role单个删除
+        /// role单个删除(真实删除)
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
@@ -56,6 +57,19 @@ namespace BLL
         {
             var role = RoleDTOmapperToModel.Map(t);
             await roleDAL.DeleteAsync(role);
+            await roleDAL.CommitAsync();
+        }
+
+        /// <summary>
+        /// role单个删除(软删除)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public async Task DeleteBySoftAsync(RoleDTO t)
+        {
+            var role = RoleDTOmapperToModel.Map(t);
+            await roleDAL.DeleteBySoftAsync(role);
+            await roleDAL.CommitAsync();
         }
 
         /// <summary>
@@ -66,6 +80,7 @@ namespace BLL
         public async Task DeleteAsync(Expression<Func<Role, bool>> exp)
         {
             await roleDAL.DeleteAsync(exp);
+            await roleDAL.CommitAsync();
         }
 
         /// <summary>
@@ -86,7 +101,7 @@ namespace BLL
         /// <returns></returns>
         public async Task<List<RoleDTO>> GetFiltersAsync(Expression<Func<Role, bool>> exp)
         {
-            var list=await roleDAL.GetFiltersAsync(exp);
+            var list=(await roleDAL.GetFiltersAsync(exp)).ToList();
             return RolemapperToDTO.MapEnum(list).ToList();
         }
 
@@ -99,6 +114,7 @@ namespace BLL
         {
             var role = RoleDTOmapperToModel.Map(t);
             await roleDAL.UpdateAsync(role);
+            await roleDAL.CommitAsync();
         }
 
         /// <summary>
@@ -111,7 +127,7 @@ namespace BLL
             //角色id查找对应的所有role和power
             var rolepower = await roleDAL.GetRolePowerAsync(Id);
             //数据库中所有的role
-            var powers = await powerDAL.GetFiltersAsync(e => e.IsDeleted == false);
+            var powers = (await powerDAL.GetFiltersAsync(e => e.IsDeleted == false)).ToList();
             var powersDTO = PowermapperToDTO.MapEnum(powers).ToList();
             foreach (var powerDTO in powersDTO)
             {

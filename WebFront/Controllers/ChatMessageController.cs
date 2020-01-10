@@ -140,7 +140,7 @@ namespace WebFront.Controllers
         }
 
         /// <summary>
-        /// 删除指定的聊天内容
+        /// 删除指定的聊天内容(真实删除)
         /// </summary>
         /// <param name="Id">聊天消息的内容</param>
         /// <returns></returns>
@@ -157,7 +157,26 @@ namespace WebFront.Controllers
             {
                 return Content("删除失败"+ex.Message);
             }
-          
+        }
+
+        /// <summary>
+        /// 删除指定的聊天内容(软删除)
+        /// </summary>
+        /// <param name="Id">聊天消息的内容</param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult> DeleteBySoft(string Id, string Sender, string Receiver)
+        {
+            try
+            {
+                ChatMessageDTO chatMessageDTO = new ChatMessageDTO() { Sender = Sender, Receiver = Receiver, Id = Id };
+                await chatMessageBLL.DeleteBySoftAsync(chatMessageDTO);
+                return Redirect("/ChatMessage/Index");
+            }
+            catch (Exception ex)
+            {
+                return Content("删除失败" + ex.Message);
+            }
         }
 
         /// <summary>

@@ -40,10 +40,11 @@ namespace BLL
         {
             var power = PowerDTOMapperToModel.Map(t);
             await powerDAL.AddAsync(power);
+            await powerDAL.CommitAsync();
         }
 
         /// <summary>
-        /// role单个删除
+        /// role单个删除(真实删除)
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
@@ -51,6 +52,19 @@ namespace BLL
         {
             var power = PowerDTOMapperToModel.Map(t);
             await powerDAL.DeleteAsync(power);
+            await powerDAL.CommitAsync();
+        }
+
+        /// <summary>
+        /// role单个删除(软删除)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public async Task DeleteBySoftAsync(PowerDTO t)
+        {
+            var power = PowerDTOMapperToModel.Map(t);
+            await powerDAL.DeleteBySoftAsync(power);
+            await powerDAL.CommitAsync();
         }
 
         /// <summary>
@@ -61,6 +75,7 @@ namespace BLL
         public async Task DeleteAsync(Expression<Func<Power, bool>> exp)
         {
             await powerDAL.DeleteAsync(exp);
+            await powerDAL.CommitAsync();
         }
 
         /// <summary>
@@ -81,7 +96,7 @@ namespace BLL
         /// <returns></returns>
         public async Task<List<PowerDTO>> GetFiltersAsync(Expression<Func<Power, bool>> exp)
         {
-            var list=await powerDAL.GetFiltersAsync(exp);
+            var list=(await powerDAL.GetFiltersAsync(exp)).ToList();
             return PowerMapperToDTO.MapEnum(list).ToList();
         }
 
@@ -94,6 +109,7 @@ namespace BLL
         {
             var power = PowerDTOMapperToModel.Map(t);
             await powerDAL.UpdateAsync(power);
+            await powerDAL.CommitAsync();
         }
 
 

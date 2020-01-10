@@ -40,11 +40,11 @@
                     {
                         if (@roleDTO.IsChoosed)
                         {
-                            <input name="like1[Role_Ids]" lay-skin="primary" title=@roleDTO.Name type="checkbox" checked>
+                            <input name="Role_Ids" lay-skin="primary" value=@roleDTO.Id title=@roleDTO.Name type="checkbox" checked>
                         }
                         else
                         {
-                            <input name="like1[Role_Ids]" lay-skin="primary" title=@roleDTO.Name disabled="" type="checkbox">
+                            <input name="Role_Ids" lay-skin="primary" value=@roleDTO.Id title=@roleDTO.Name disabled="" type="checkbox">
                         }
                     }
                 }
@@ -60,38 +60,38 @@
     <script>
         layui.use('form', function () {
             var form = layui.form;
-
             //监听提交
             form.on('submit(formDemo)', function (obj) {
                 var data = obj.data;
-                $.ajax(function () {
-                    var Name = $("#Name").val();
-                    var Password = $("#Password").val();
-                    var Id = $("#Id").val();
-                    var chk_value = [];//定义一个数组
-                    $('input[name="Role_Ids"]:checked').each(function () {//遍历每一个名字为nodes的复选框，其中选中的执行函数
-                        chk_value.push($(this).val());//将选中的值添加到数组chk_value中
-                    });
-                    var Role_Ids = chk_value.join(",").split(",");
-                    $.ajax({
-                        url: "/User/Update",
-                        type: "post",
-                        data: { Name: Name, Password: Password, Id: Id, Role_Ids: Role_Ids },
-                        dataType: "json",
-                        success: function (data) {
-                            if (data.State == "success") {
-                                window.location.href = '/User/Index';
-                            }
-                            else {
-                                alert(data.Message);
-                            }
-                        },
-                        error: function () {
-                            window.location.href = '/General/Error';
-                        }
-                    });
-                    return false;
+                //用户id
+                var Id = $("#Id").val();
+                //用户名字
+                var Name = $("#Name").val();
+                //用户密码
+                var Password = $("#Password").val();
+                var chk_value = [];//定义一个数组
+                $('input[name="Role_Ids"]:checked').each(function () {//遍历每一个名字为nodes的复选框，其中选中的执行函数
+                    chk_value.push($(this).val());//将选中的值添加到数组chk_value中
                 });
+                var Role_Ids = chk_value.join(",").split(",");
+                $.ajax({
+                    url: "/User/Update",
+                    type: "post",
+                    data: { Id: Id, Name: Name, Password: Password, Role_Ids: Role_Ids },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.State == "success") {
+                            window.location.href = '/User/Index';
+                        }
+                        else {
+                            alert(data.Message);
+                        }
+                    },
+                    error: function () {
+                        window.location.href = '/General/Error';
+                    }
+                });
+                return false;
             });
         });
     </script>

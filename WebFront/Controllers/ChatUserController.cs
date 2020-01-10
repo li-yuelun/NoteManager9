@@ -31,6 +31,12 @@ namespace WebFront.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 数据表加载
+        /// </summary>
+        /// <param name="ChatName"></param>
+        /// <param name="Password"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<JsonResult> GetData(string ChatName,string Password)
         {
@@ -53,6 +59,11 @@ namespace WebFront.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 聊天用户新增
+        /// </summary>
+        /// <param name="chatUserDTO"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<string> Add(ChatUserDTO chatUserDTO)
         {
@@ -79,6 +90,11 @@ namespace WebFront.Controllers
             return View(entity);
         }
 
+        /// <summary>
+        /// 聊天用户修改
+        /// </summary>
+        /// <param name="chatUserDTO"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<string> Update(ChatUserDTO chatUserDTO)
         {
@@ -93,6 +109,11 @@ namespace WebFront.Controllers
             }
         }
 
+        /// <summary>
+        /// 聊天用户删除(真实删除)
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult> Delete(long Id)
         {
@@ -104,6 +125,25 @@ namespace WebFront.Controllers
             catch (Exception ex)
             {
                 return Content("删除失败"+ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 聊天用户删除(软删除)
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult> DeleteBySoft(long Id)
+        {
+            try
+            {
+                //await chatUserBLL.DeleteBySoftAsync(e => e.Id == Id && e.IsDeleted == false);
+                return Redirect("/ChatUser/Index");
+            }
+            catch (Exception ex)
+            {
+                return Content("删除失败" + ex.Message);
             }
         }
 

@@ -20,11 +20,18 @@ namespace IBLL
         Task AddAsync(MusicDTO t);
 
         /// <summary>
-        /// 单个音乐删除
+        /// 单个音乐删除(真实删除)
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
         Task DeleteAsync(MusicDTO t);
+
+        /// <summary>
+        /// 单个音乐删除(软删除)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        Task DeleteBySoftAsync(MusicDTO t);
 
         /// <summary>
         /// 根据条件动态删除

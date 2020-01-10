@@ -37,10 +37,11 @@ namespace BLL
         {
             var note = NoteDTOMapperToModel.Map(t);
             await noteDAL.AddAsync(note);
+            await noteDAL.CommitAsync();
         }
 
         /// <summary>
-        /// role单个删除
+        /// role单个删除(真实删除)
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
@@ -48,6 +49,19 @@ namespace BLL
         {
             var note = NoteDTOMapperToModel.Map(t);
             await noteDAL.DeleteAsync(note);
+            await noteDAL.CommitAsync();
+        }
+
+        /// <summary>
+        /// role单个删除(软删除)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public async Task DeleteBySoftAsync(NoteDTO t)
+        {
+            var note = NoteDTOMapperToModel.Map(t);
+            await noteDAL.DeleteBySoftAsync(note);
+            await noteDAL.CommitAsync();
         }
 
         /// <summary>
@@ -58,6 +72,7 @@ namespace BLL
         public async Task DeleteAsync(Expression<Func<Note, bool>> exp)
         {
             await noteDAL.DeleteAsync(exp);
+            await noteDAL.CommitAsync();
         }
 
         /// <summary>
@@ -78,7 +93,7 @@ namespace BLL
         /// <returns></returns>
         public async Task<List<NoteDTO>> GetFiltersAsync(Expression<Func<Note, bool>> exp)
         {
-            var list=await noteDAL.GetFiltersAsync(exp);
+            var list=(await noteDAL.GetFiltersAsync(exp)).ToList();
             return NoteMapperToDTO.MapEnum(list).ToList();
         }
 
@@ -91,6 +106,7 @@ namespace BLL
         {
             var note = NoteDTOMapperToModel.Map(t);
             await noteDAL.UpdateAsync(note);
+            await noteDAL.CommitAsync();
         }
     }
 }

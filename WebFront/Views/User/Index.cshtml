@@ -15,6 +15,7 @@
         <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del_soft">软删除</a>
     </script>
     <script>
         layui.use(['util', 'table'], function () {
@@ -57,14 +58,15 @@
                     layer.confirm('真的删除行么', function (index) {
                         obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                         layer.close(index);
-                        //向服务端发送删除指令
-                        //table.reload('testReload', {
-                        //    url: '/User/Delete',
-                        //    where: {
-                        //        Id: data.Id
-                        //    }
-                        //}, 'data');
                         location.href = "/User/Delete?Id=" + data.Id;
+                    });
+                }
+                //删除
+                else if (layEvent === 'del_soft') {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+                        layer.close(index);
+                        location.href = "/User/DeleteBySoft?Id=" + data.Id;
                     });
                 }
                 //编辑
@@ -75,7 +77,8 @@
                     layer.alert('Hi，头部工具栏扩展的右侧图标。');
                 }
             });
-            var $ = layui.$, active = {
+            var $ = layui.$,
+            active = {
                 reload: function () {
                     var Name = $('#Name').val();
                     //执行重载
@@ -89,7 +92,7 @@
                     }, 'data');
                 }
             };
-            //搜索
+            //搜索点击
             $('.demoTable .layui-btn').on('click', function () {
                 var type = $(this).data('type');
                 active[type] ? active[type].call(this) : '';

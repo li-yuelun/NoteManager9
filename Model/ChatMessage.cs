@@ -8,17 +8,29 @@ namespace Model
     /// </summary>
     public class ChatMessage
     {
-        //主键id
+        /// <summary>
+        /// 主键id
+        /// </summary>
         public string Id { get; set; }
-        //发送的消息
+        /// <summary>
+        /// 发送的消息
+        /// </summary>
         public string Message { get; set; }
-        //发送者
+        /// <summary>
+        /// 发送者
+        /// </summary>
         public string Sender { get; set; }
-        //接受者
+        /// <summary>
+        /// 接受者
+        /// </summary>
         public string Receiver { get; set; }
-        //是否删除
+        /// <summary>
+        /// 是否删除
+        /// </summary>
         public bool IsDeleted { get; set; }
-        //创建时间
+        /// <summary>
+        /// 创建时间
+        /// </summary>
         public DateTime CreateTime { get; set; } 
     }
 }

@@ -21,7 +21,7 @@ namespace IBLL
         void Add(ChatUserDTO t);
 
         /// <summary>
-        /// 单个聊天用户删除
+        /// 单个聊天用户删除(真实删除)
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
@@ -29,6 +29,14 @@ namespace IBLL
 
         void Delete(ChatUserDTO t);
 
+        /// <summary>
+        /// 单个聊天用户删除(软删除)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        Task DeleteBySoftAsync(ChatUserDTO t);
+
+        void DeleteBySoft(ChatUserDTO t);
         /// <summary>
         /// 根据动态条件删除聊天用户
         /// </summary>

@@ -11,16 +11,53 @@ namespace IBLL
 {
     public interface IRoleBLL
     {
+        /// <summary>
+        /// 单个角色新增
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         Task AddAsync(RoleDTO t);
 
+        /// <summary>
+        /// 单个角色删除(真实删除)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         Task DeleteAsync(RoleDTO t);
 
+        /// <summary>
+        /// 单个角色删除(软删除)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        Task DeleteBySoftAsync(RoleDTO t);
+
+        /// <summary>
+        /// 角色动态删除
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
         Task DeleteAsync(Expression<Func<Role, bool>> exp);
 
+        /// <summary>
+        /// 单个角色修改
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         Task UpdateAsync(RoleDTO t);
 
+        /// <summary>
+        /// 单个角色动态获取
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
         Task<RoleDTO> GetEntityAsync(Expression<Func<Role, bool>> exp);
 
+        /// <summary>
+        /// 多个角色动态获取
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
         Task<List<RoleDTO>> GetFiltersAsync(Expression<Func<Role, bool>> exp);
 
         /// <summary>

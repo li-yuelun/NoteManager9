@@ -8,10 +8,14 @@ namespace Model
     [SugarTable("t_musicuserrelations")]
     public class MusicUserRelation
     {
-        //音乐指定主键
+        /// <summary>
+        /// 音乐指定主键
+        /// </summary>
         [SugarColumn(IsPrimaryKey = true)]
         public long Music_Id { get; set; }
-        //用户指定主键
+        /// <summary>
+        /// 用户指定主键
+        /// </summary>
         [SugarColumn(IsPrimaryKey = true)]
         public long User_Id { get; set; }
     }

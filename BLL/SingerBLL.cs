@@ -39,10 +39,11 @@ namespace BLL
         {
             var singer = SingerDTOMapperToModel.Map(t);
             await singerDAL.AddAsync(singer);
+            await singerDAL.CommitAsync();
         }
 
         /// <summary>
-        /// singer单个删除
+        /// singer单个删除(真实杀出)
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
@@ -50,6 +51,19 @@ namespace BLL
         {
             var singer = SingerDTOMapperToModel.Map(t);
             await singerDAL.DeleteAsync(singer);
+            await singerDAL.CommitAsync();
+        }
+
+        /// <summary>
+        /// singer单个删除(软删除)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public async Task DeleteBySoftAsync(SingerDTO t)
+        {
+            var singer = SingerDTOMapperToModel.Map(t);
+            await singerDAL.DeleteBySoftAsync(singer);
+            await singerDAL.CommitAsync();
         }
 
         /// <summary>
@@ -60,6 +74,7 @@ namespace BLL
         public async Task DeleteAsync(Expression<Func<Singer, bool>> exp)
         {
             await singerDAL.DeleteAsync(exp);
+            await singerDAL.CommitAsync();
         }
 
         /// <summary>
@@ -80,7 +95,7 @@ namespace BLL
         /// <returns></returns>
         public async Task<List<SingerDTO>> GetFiltersAsync(Expression<Func<Singer, bool>> exp)
         {
-            var list = await singerDAL.GetFiltersAsync(exp);
+            var list = (await singerDAL.GetFiltersAsync(exp)).ToList();
             return SingerMapperToDTO.MapEnum(list).ToList();
         }
 
@@ -93,6 +108,7 @@ namespace BLL
         {
             var singer = SingerDTOMapperToModel.Map(t);
             await singerDAL.UpdateAsync(singer);
+            await singerDAL.CommitAsync();
         }
     }
 }

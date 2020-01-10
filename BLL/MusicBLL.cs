@@ -39,10 +39,11 @@ namespace BLL
         {
             var music = MusicDTOMapperToModel.Map(t);
             await musicDAL.AddAsync(music);
+            await musicDAL.CommitAsync();
         }
 
         /// <summary>
-        /// 单个音乐删除
+        /// 单个音乐删除(真实删除)
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
@@ -50,6 +51,19 @@ namespace BLL
         {
             var music = MusicDTOMapperToModel.Map(t);
             await musicDAL.DeleteAsync(music);
+            await musicDAL.CommitAsync();
+        }
+
+        /// <summary>
+        /// 单个音乐删除(软删除)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public async Task DeleteBySoftAsync(MusicDTO t)
+        {
+            var music = MusicDTOMapperToModel.Map(t);
+            await musicDAL.DeleteBySoftAsync(music);
+            await musicDAL.CommitAsync();
         }
 
         /// <summary>
@@ -60,6 +74,7 @@ namespace BLL
         public async Task DeleteAsync(Expression<Func<Music, bool>> exp)
         {
             await musicDAL.DeleteAsync(exp);
+            await musicDAL.CommitAsync();
         }
 
         /// <summary>
@@ -80,7 +95,7 @@ namespace BLL
         /// <returns></returns>
         public async Task<List<MusicDTO>> GetFiltersAsync(Expression<Func<Music, bool>> exp)
         {
-            var list = await musicDAL.GetFiltersAsync(exp);
+            var list = (await musicDAL.GetFiltersAsync(exp)).ToList();
             return MusicMapperToDTO.MapEnum(list).ToList();
         }
 
@@ -93,6 +108,8 @@ namespace BLL
         {
             var music = MusicDTOMapperToModel.Map(t);
             await musicDAL.UpdateAsync(music);
+            await musicDAL.CommitAsync();
         }
+
     }
 }

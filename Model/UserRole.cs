@@ -7,9 +7,13 @@ namespace Model
     /// </summary>
     public class UserRole
     {
-        //用户
+        /// <summary>
+        /// 用户
+        /// </summary>
         public User User { get; set; }
-        //用户对应角色
+        /// <summary>
+        /// 用户对应角色
+        /// </summary>
         public List<Role> Roles { get; set; }
     }
 }

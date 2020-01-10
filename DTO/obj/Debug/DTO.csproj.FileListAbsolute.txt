@@ -15,4 +15,3 @@ D:\vb project\工作\NoteManager9\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cac
 D:\vb project\工作\NoteManager9\DTO\obj\Debug\DTO.csproj.CopyComplete
 D:\vb project\工作\NoteManager9\DTO\obj\Debug\DTO.dll
 D:\vb project\工作\NoteManager9\DTO\obj\Debug\DTO.pdb
-D:\vb project\工作\NoteManager9\DTO\obj\Debug\DTO.csprojAssemblyReference.cache

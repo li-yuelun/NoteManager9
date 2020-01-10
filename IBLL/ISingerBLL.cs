@@ -19,11 +19,18 @@ namespace IBLL
         Task AddAsync(SingerDTO t);
 
         /// <summary>
-        /// 单个歌手删除
+        /// 单个歌手删除(真实删除)
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
         Task DeleteAsync(SingerDTO t);
+
+        /// <summary>
+        /// 单个歌手删除(软删除)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        Task DeleteBySoftAsync(SingerDTO t);
 
         /// <summary>
         /// 歌手动态删除

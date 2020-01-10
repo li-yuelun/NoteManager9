@@ -7,9 +7,13 @@ namespace Model
     /// </summary>
     public class RolePower
     {
-        //角色
+        /// <summary>
+        /// 角色
+        /// </summary>
         public Role Role { get; set; }
-        //角色对应的权限
+        /// <summary>
+        /// 角色对应的权限
+        /// </summary>
         public List<Power> Powers { get; set; }
     }
 }

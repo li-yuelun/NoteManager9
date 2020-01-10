@@ -12,25 +12,45 @@ namespace Model
         //指定主键和自增列，当然数据库中也要设置主键和自增列才会有效
         [SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
         public long Id { get; set; }
-        //歌曲名字
+        /// <summary>
+        /// 歌曲名字
+        /// </summary>
         public string Name { get; set; }
-        //语种
+        /// <summary>
+        /// 语种
+        /// </summary>
         public string Language { get; set; }
-        //歌曲类型
+        /// <summary>
+        /// 歌曲类型
+        /// </summary>
         public string Style { get; set; }
-        //主题
+        /// <summary>
+        /// 主题
+        /// </summary>
         public string Theme { get; set; }
-        //歌词
+        /// <summary>
+        /// 歌词
+        /// </summary>
         public string Lyrics { get; set; }
-        //删除标记
+        /// <summary>
+        /// 删除标记
+        /// </summary>
         public bool? IsDeleted { get; set; } = false;
-        //创建时间
+        /// <summary>
+        /// 创建时间
+        /// </summary>
         public DateTime? CreateTime { get; set; } = DateTime.Now;
-        //地址
+        /// <summary>
+        /// 地址
+        /// </summary>
         public string Url { get; set; }
-        //歌手id
+        /// <summary>
+        /// 歌手id
+        /// </summary>
         public long Singer_Id { get; set; }
-        //演唱者
+        /// <summary>
+        /// 演唱者名字
+        /// </summary>
         public string SingerName { get; set; }
     }
 }

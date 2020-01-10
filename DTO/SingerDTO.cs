@@ -5,21 +5,37 @@ namespace DTO
     public class SingerDTO
     {
         public long Id { get; set; }
-        //歌手名字
+        /// <summary>
+        /// 歌手名字
+        /// </summary>
         public string Name { get; set; }
-        //歌手名字首字母
+        /// <summary>
+        /// 歌手名字首字母
+        /// </summary>
         public string FirstLetter { get; set; }
-        //歌手国家
+        /// <summary>
+        /// 歌手国家
+        /// </summary>
         public string Country { get; set; }
-        //风格
+        /// <summary>
+        /// 风格
+        /// </summary>
         public string Style { get; set; }
-        //性别
+        /// <summary>
+        /// 性别
+        /// </summary>
         public string Sex { get; set; }
-        //照片
+        /// <summary>
+        /// 照片
+        /// </summary>
         public string Picture { get; set; }
-        //删除标记
+        /// <summary>
+        /// 删除标记
+        /// </summary>
         public bool? IsDeleted { get; set; }
-        //创建时间
+        /// <summary>
+        /// 创建时间
+        /// </summary>
         public DateTime? CreateTime { get; set; }
     }
 }

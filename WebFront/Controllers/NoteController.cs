@@ -1,13 +1,16 @@
-﻿using DTO;
+﻿using Common;
+using DTO;
 using IBLL;
 using Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using ExpressionHelper = Common.ExpressionHelper;
 
 namespace WebFront.Controllers
 {
@@ -30,18 +33,19 @@ namespace WebFront.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> GetData(string Name)
+        public async Task<JsonResult> GetData(string Name,string Style)
         {
+            var exp = ExpressionHelper.True<Note>();
             if (!string.IsNullOrEmpty(Name))
             {
-                var list = (await noteBLL.GetFiltersAsync(e => e.Name == Name));
-                return Json(list, JsonRequestBehavior.AllowGet);
+                exp = exp.And(p => p.Name == Name);
             }
-            else
+            if (!string.IsNullOrEmpty(Style))
             {
-                var list = (await noteBLL.GetFiltersAsync(e => true));
-                return Json(list, JsonRequestBehavior.AllowGet);
+                exp = exp.And(p => p.Style == Style);
             }
+            var list = (await noteBLL.GetFiltersAsync(exp));
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]

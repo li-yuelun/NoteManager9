@@ -21,3 +21,4 @@ D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\
 D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\Common\bin\Debug\JWT.xml
 D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\Common\bin\Debug\Newtonsoft.Json.xml
 D:\vs project\日志管理\asp.net mvc+Autofac+SqlSugar+EmitMapper+Webapi+mysql\NoteManager9\Common\obj\Debug\Common.csproj.CopyComplete
+D:\vb project\工作\NoteManager9\Common\obj\Debug\Common.csprojAssemblyReference.cache

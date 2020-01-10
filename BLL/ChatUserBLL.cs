@@ -38,16 +38,18 @@ namespace BLL
         {
             var chatuser = ChatUserDTOMapperToModel.Map(t);
             await chatUserDAL.AddAsync(chatuser);
+            await chatUserDAL.CommitAsync();
         }
 
         public void Add(ChatUserDTO t)
         {
             var chatuser = ChatUserDTOMapperToModel.Map(t);
             chatUserDAL.Add(chatuser);
+            chatUserDAL.Commit();
         }
 
         /// <summary>
-        /// 单个聊天用户删除
+        /// 单个聊天用户删除(真实删除)
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
@@ -55,11 +57,33 @@ namespace BLL
         {
             var chatuser = ChatUserDTOMapperToModel.Map(t);
             await chatUserDAL.DeleteAsync(chatuser);
+            await chatUserDAL.CommitAsync();
         }
 
         public void Delete(ChatUserDTO t)
         {
-            throw new NotImplementedException();
+            var chatuser = ChatUserDTOMapperToModel.Map(t);
+            chatUserDAL.Delete(chatuser);
+            chatUserDAL.Commit();
+        }
+
+        /// <summary>
+        /// 单个聊天用户删除(软删除)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public async Task DeleteBySoftAsync(ChatUserDTO t)
+        {
+            var chatuser = ChatUserDTOMapperToModel.Map(t);
+            await chatUserDAL.DeleteBySoftAsync(chatuser);
+            await chatUserDAL.CommitAsync();
+        }
+
+        public void DeleteBySoft(ChatUserDTO t)
+        {
+            var chatuser = ChatUserDTOMapperToModel.Map(t);
+            chatUserDAL.DeleteBySoft(chatuser);
+            chatUserDAL.Commit();
         }
 
         /// <summary>
@@ -70,6 +94,7 @@ namespace BLL
         public async Task DeleteAsync(Expression<Func<ChatUser, bool>> exp)
         {
             await chatUserDAL.DeleteAsync(exp);
+            await chatUserDAL.CommitAsync();
         }
 
         public void Delete(Expression<Func<ChatUser, bool>> exp)
@@ -100,13 +125,13 @@ namespace BLL
         /// <returns></returns>
         public async Task<List<ChatUserDTO>> GetFiltersAsync(Expression<Func<ChatUser, bool>> exp)
         {
-            var list = await chatUserDAL.GetFiltersAsync(exp);
+            var list = (await chatUserDAL.GetFiltersAsync(exp)).ToList();
             return ChatUserMapperToDTO.MapEnum(list).ToList();
         }
 
         public List<ChatUserDTO> GetFilters(Expression<Func<ChatUser, bool>> exp)
         {
-            var list = chatUserDAL.GetFilters(exp);
+            var list = chatUserDAL.GetFilters(exp).ToList();
             return ChatUserMapperToDTO.MapEnum(list).ToList();
         }
 
@@ -119,6 +144,7 @@ namespace BLL
         {
             var chatuser = ChatUserDTOMapperToModel.Map(t);
             await chatUserDAL.UpdateAsync(chatuser);
+            await chatUserDAL.CommitAsync();
         }
 
         public void Update(ChatUserDTO t)

@@ -6,19 +6,33 @@ namespace DTO
     public class CommentsDTO
     {
         public ObjectId Id { get; set; }
-        //评论人
+        /// <summary>
+        /// 评论人
+        /// </summary>
         public string UserName { get; set; }
-        //评论人ID
+        /// <summary>
+        /// 评论人ID
+        /// </summary>
         public long User_Id { get; set; }
-        //评论歌曲
+        /// <summary>
+        /// 评论歌曲
+        /// </summary>
         public string MusicName { get; set; }
-        //歌曲ID
+        /// <summary>
+        /// 歌曲ID
+        /// </summary>
         public long Music_Id { get; set; }
-        //评论内容
+        /// <summary>
+        /// 评论内容
+        /// </summary>
         public string CommentDetail { get; set; }
-        //删除标记
+        /// <summary>
+        /// 删除标记
+        /// </summary>
         public bool IsDeleted { get; set; } = false;
-        //评论时间
+        /// <summary>
+        /// 评论时间
+        /// </summary>
         public DateTime CreateTime { get; set; } = DateTime.Now;
     }
 }

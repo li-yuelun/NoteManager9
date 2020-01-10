@@ -11,16 +11,53 @@ namespace IBLL
 {
     public interface IUserBLL
     {
+        /// <summary>
+        /// 单个用户新增
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         Task AddAsync(UserDTO t);
 
+        /// <summary>
+        /// 单个用户删除(真实删除)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         Task DeleteAsync(UserDTO t);
 
+        /// <summary>
+        /// 单个用户删除(软删除)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        Task DeleteBySoftAsync(UserDTO t);
+
+        /// <summary>
+        /// 用户动态删除
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
         Task DeleteAsync(Expression<Func<User, bool>> exp);
 
+        /// <summary>
+        /// 单个用户修改
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         Task UpdateAsync(UserDTO t);
 
+        /// <summary>
+        /// 单个用户动态获取
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
         Task<UserDTO> GetEntityAsync(Expression<Func<User, bool>> exp);
 
+        /// <summary>
+        /// 多个用户动态获取
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
         Task<List<UserDTO>> GetFiltersAsync(Expression<Func<User, bool>> exp);
 
         /// <summary>

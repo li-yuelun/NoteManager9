@@ -41,7 +41,7 @@ namespace WebFront.Controllers
             }
             if(!string.IsNullOrEmpty(Mark))
             {
-                exp = exp.And(p => p.Name == Name);
+                exp = exp.And(p => p.Mark == Mark);
             }
             var list = (await roleBLL.GetFiltersAsync(exp));
             return Json(list, JsonRequestBehavior.AllowGet);
